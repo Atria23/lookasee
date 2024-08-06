@@ -38,7 +38,7 @@ import Stats from "./Stats";
 
 export default function HomePage() {
   return (
-    <div className="font-sans">
+    <div className="font-sans mt-16">
       <section className="w-full bg-cover bg-center bg-[url('https://i.postimg.cc/0jvhV9Mj/bg-hero.png')] bg-no-repeat">
         <div className="max-w-screen-xl px-4 py-16 mx-auto lg:py-40 text-center">
           <h1 className="mb-6 text-3xl font-semibold text-white md:text-4xl lg:text-5xl">Hilang?</h1>
@@ -47,6 +47,7 @@ export default function HomePage() {
           <SearchBar />
         </div>
       </section>
+      
 
       
         <CategoryButtons />

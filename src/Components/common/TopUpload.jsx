@@ -178,9 +178,6 @@ export default function TopUpload() {
 
   // Function to get additional styles for the second top card
   const getCardStyles = (index) => {
-    if (index === 1) {
-      return 'transform w-full max-w-sm'; // Adjust size for mobile
-    }
     return 'w-full max-w-sm'; // Default size for other cards
   };
 
@@ -222,7 +219,6 @@ export default function TopUpload() {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="mt-3 h-8 w-8 text-gray-500"
-                    viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"

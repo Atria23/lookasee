@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { supabase } from '../../client';
 
@@ -49,27 +50,27 @@ export default function HomePage() {
   }, []);
 
   return (
-    <section className="mx-auto w-full py-16 px-9 bg-utama">
-      <div className="flex justify-center space-x-40">
-        <div className="flex flex-col items-center">
-          <img src="/images/lost-item.svg" alt="Barang Hilang" className="w-20 h-20 mb-3" />
-          <span className="text-black text-3xl font-bold">{jumlahBarangHilang}</span>
-          <span className="text-black text-lg">Barang Hilang</span>
+    <section className="mx-auto w-full py-16 px-4 bg-utama">
+      <div className="flex flex-wrap justify-center mx-8 text-center">
+        <div className="flex flex-col items-center w-1/2 sm:w-1/4">
+          <img src="/images/lost-item.svg" alt="Barang Hilang" className="mt-8 w-16 h-16 mb-3" />
+          <span className="text-black text-xl sm:text-2xl font-bold">{jumlahBarangHilang}</span>
+          <span className="mb-8 text-black text-sm sm:text-base">Barang Hilang</span>
         </div>
-        <div className="flex flex-col items-center">
-          <img src="/images/item-found.svg" alt="Barang Ditemukan" className="w-20 h-20 mb-3" />
-          <span className="text-black text-3xl font-bold">{jumlahBarangDitemukan}</span>
-          <span className="text-black text-lg">Barang Ditemukan</span>
+        <div className="flex flex-col items-center w-1/2 sm:w-1/4">
+          <img src="/images/item-found.svg" alt="Barang Ditemukan" className="mt-8 w-16 h-16 mb-3" />
+          <span className="text-black text-xl sm:text-2xl font-bold">{jumlahBarangDitemukan}</span>
+          <span className="mb-8 text-black text-sm sm:text-base">Barang Ditemukan</span>
         </div>
-        <div className="flex flex-col items-center">
-          <img src="/images/user.svg" alt="Pengguna" className="w-20 h-20 mb-3" />
-          <span className="text-black text-3xl font-bold">{jumlahPengguna}</span>
-          <span className="text-black text-lg">Pengguna</span>
+        <div className="flex flex-col items-center w-1/2 sm:w-1/4">
+          <img src="/images/user.svg" alt="Pengguna" className="mt-8 w-16 h-16 mb-3" />
+          <span className="text-black text-xl sm:text-2xl font-bold">{jumlahPengguna}</span>
+          <span className="mb-8 text-black text-sm sm:text-base">Pengguna</span>
         </div>
-        <div className="flex flex-col items-center">
-          <img src="/images/return.svg" alt="Barang Dikembalikan" className="w-20 h-20 mb-3" />
-          <span className="text-black text-3xl font-bold">{jumlahBarangDikembalikan}</span>
-          <span className="text-black text-lg">Barang Kembali Ke Pemilik</span>
+        <div className="flex flex-col items-center w-1/2 sm:w-1/4">
+          <img src="/images/return.svg" alt="Barang Dikembalikan" className="mt-8 w-16 h-16 mb-3" />
+          <span className="text-black text-xl sm:text-2xl font-bold">{jumlahBarangDikembalikan}</span>
+          <span className="mb-8 text-black text-sm sm:text-base">Barang Kembali Ke Pemilik</span>
         </div>
       </div>
     </section>

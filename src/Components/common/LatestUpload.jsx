@@ -258,12 +258,12 @@ export default function LatestUpload() {
   // Scroll handlers for arrow buttons
   const scrollLeft = () => {
     const container = document.querySelector(".scroll-container");
-    container.scrollBy({ left: -200, behavior: "smooth" });
+    container.scrollBy({ left: -500, behavior: "smooth" });
   };
 
   const scrollRight = () => {
     const container = document.querySelector(".scroll-container");
-    container.scrollBy({ left: 200, behavior: "smooth" });
+    container.scrollBy({ left: 500, behavior: "smooth" });
   };
 
   return (

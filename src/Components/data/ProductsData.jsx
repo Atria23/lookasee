@@ -1,0 +1,122 @@
+    export const productsData = [
+        { 
+            id: 1,
+            image_url: "/images/pizza-3.png",
+            item_name: 'topi', 
+            status: 'Ditemukan', 
+            region: 'Semarang',
+            address: 'Jl. Kedungmundu raya no 1003',
+            category: 'clothing',
+            time: '2023-06-15',
+            description: 'aaaaaaaaaaaaaaaaaaaaaaaadafl;kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            ItemRef: '123456789',
+            users_id: 1  
+        },
+        { 
+            id: 2,
+            image_url: "/images/pizza-3.png",
+            item_name: 'Handphone', 
+            status: 'Hilang', 
+            region: 'Demak',
+            address: 'Jl. Kedungmundu raya no 1003',
+            category: 'electronics',
+            time: '2023-06-16',
+            description: 'aaaaaaaaaaaaaaaaaaaaaaaadafl;kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            ItemRef: '123456788',
+            users_id: 1
+        },
+        { 
+            id: 3,
+            image_url: "/images/pizza-3.png",
+            item_name: 'laptop', 
+            status: 'Ditemukan', 
+            region: 'Pemalang',
+            address: 'Jl. Kedungmundu raya no 1003',
+            category: 'electronics',
+            time: '2023-06-17',
+            description: 'aaaaaaaaaaaaaaaaaaaaaaaadafl;kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            ItemRef: '123456787',
+            users_id: 1
+        },
+        { 
+            id: 4,
+            image_url: "/images/pizza-3.png",
+            item_name: 'dompet', 
+            status: 'Hilang', 
+            region: 'Kabupaten Demak',
+            address: 'Jl. Kedungmundu raya no 1003',
+            category: 'clothing',
+            time: '2023-06-18',
+            description: 'aaaaaaaaaaaaaaaaaaaaaaaadafl;kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            ItemRef: '123456786',
+            users_id: 1
+        },
+        { 
+            id: 5,
+            image_url: "/images/pizza-3.png",
+            item_name: 'motor', 
+            status: 'Ditemukan', 
+            region: 'Semarang',
+            address: 'Jl. Kedungmundu raya no 1003',
+            category: 'vehicles',
+            time: '2023-06-19',
+            description: 'aaaaaaaaaaaaaaaaaaaaaaaadafl;kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            ItemRef: '123456785',
+            users_id: 2
+        },
+        { 
+            id: 6,
+            image_url: "/images/pizza-3.png",
+            item_name: 'mobil', 
+            status: 'Hilang', 
+            region: 'Semarang',
+            address: 'Jl. Kedungmundu raya no 1003',
+            category: 'vehicles',
+            time: '2023-06-20',
+            description: 'aaaaaaaaaaaaaaaaaaaaaaaadafl;kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            ItemRef: '123456784',
+            users_id: 2
+        },
+        { 
+            id: 7,
+            image_url: "/images/pizza-3.png",
+            item_name: 'jam tangan', 
+            status: 'Ditemukan', 
+            region: 'Semarang',
+            address: 'Jl. Kedungmundu raya no 1003',
+            category: 'clothing',
+            time: '2023-06-21',
+            description: 'aaaaaaaaaaaaaaaaaaaaaaaadafl;kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            ItemRef: '123456783',
+            users_id: 2
+        },
+        { 
+            id: 8,
+            image_url: "/images/pizza-3.png",
+            item_name: 'tas pinggang', 
+            status: 'Hilang', 
+            region: 'Semarang',
+            address: 'Jl. Kedungmundu raya no 1003',
+            category: 'clothing',
+            time: '2023-06-22',
+            description: 'aaaaaaaaaaaaaaaaaaaaaaaadafl;kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            ItemRef: '123456782',
+            users_id: 2
+        },
+        { 
+            id: 9,
+            image_url: "/images/pizza-3.png",
+            item_name: 'cincin', 
+            status: 'Ditemukan', 
+            region: 'Semarang',
+            address: 'Jl. Kedungmundu raya no 1003',
+            category: 'clothing',
+            time: '2023-06-23',
+            description: 'aaaaaaaaaaaaaaaaaaaaaaaadafl;kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            ItemRef: '123456781',
+            users_id: 2
+        },
+    ];
+
+
+

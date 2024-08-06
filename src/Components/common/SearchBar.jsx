@@ -70,13 +70,12 @@ const filteredLocations = locations.filter(location =>
     <div className="py-6 px-4">
       <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
                 <div className="flex">
-                    {/* <label htmlFor="simple-search search-dropdown" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label> */}
-                    <button onClick={toggleFilter} type="button" data-dropdown-toggle="dropdown" className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-blue-700 hover:bg-blue-800 rounded-s-lg focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">Filter
+                    <button onClick={toggleFilter} type="button" data-dropdown-toggle="dropdown" className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-blue-700 hover:bg-blue-800 rounded-s-lg focus:ring-4 focus:outline-none focus:ring-gray-100">Filter
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 22 20" id="filter" className="ml-2"><g fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round"><g stroke="#fff" strokeWidth="2" transform="translate(-1614 -1629)"><g transform="translate(1615 1630)"><path d="M20 0H0l8 9.46V16l4 2V9.46z"></path></g></g></g></svg>
                     </button>
                     <div className="relative w-full">
-                        <input value={searchTerm} onChange={handleSearch} type="search" id="default-search" className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Cari barang kamu di sini . . ." required />
-                        <button type="submit" className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <input value={searchTerm} onChange={handleSearch} type="search" id="default-search" className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Cari barang kamu di sini . . ." required />
+                        <button type="submit" className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                             <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
@@ -92,11 +91,11 @@ const filteredLocations = locations.filter(location =>
                         <div className="bg-white p-6">
                             <h3 className="text-lg leading-6 font-medium text-gray-900">Filter Options</h3>
                             <div className="mt-4">
-                                <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                                <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900">Category</label>
                                 <div className="relative">
                                     <select
                                         id="category"
-                                        className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 appearance-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 appearance-none focus:ring-blue-500 focus:border-blue-500"
                                         value={category}
                                         onChange={(e) => setCategory(e.target.value)}
                                     >
@@ -120,21 +119,21 @@ const filteredLocations = locations.filter(location =>
                                 </div>
                             </div>
                             <div className="mt-4">
-                                <label htmlFor="upload-date" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload Date</label>
+                                <label htmlFor="upload-date" className="block mb-2 text-sm font-medium text-gray-900">Upload Date</label>
                                 <input
                                     type="date"
                                     id="upload-date"
-                                    className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                                     value={time}
                                     onChange={(e) => setTime(e.target.value)}
                                 />
                             </div>
                             <div className="mt-4">
-                                <label htmlFor="location" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
+                                <label htmlFor="location" className="block mb-2 text-sm font-medium text-gray-900">Location</label>
                                 <div className="relative">
                                     <button
                                         type="button"
-                                        className="block w-full p-2 text-left text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 flex justify-between items-center"
+                                        className="block w-full p-2 text-left text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 flex justify-between items-center"
                                         onClick={toggleLocationPopUp}
                                     >
                                         <span>{location || "Select Location"}</span>
@@ -145,11 +144,11 @@ const filteredLocations = locations.filter(location =>
                                 </div>
                             </div>
                             <div className="mt-4">
-                                <label htmlFor="status" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                                <label htmlFor="status" className="block mb-2 text-sm font-medium text-gray-900">Status</label>
                                 <div className="relative">
                                     <select
                                         id="status"
-                                        className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 appearance-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 appearance-none focus:ring-blue-500 focus:border-blue-500"
                                         value={status}
                                         onChange={(e) => setStatus(e.target.value)}
                                     >
@@ -166,14 +165,14 @@ const filteredLocations = locations.filter(location =>
                             <div className="mt-6 flex justify-end">
                                 <button
                                     type="button"
-                                    className="text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 mr-2"
+                                    className="text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 mr-2"
                                     onClick={toggleFilter}
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     type="submit"
-                                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
                                     onClick={() => {
                                         toggleFilter();
                                         handleSubmit(new Event('submit'));
@@ -196,7 +195,7 @@ const filteredLocations = locations.filter(location =>
                                 <input
                                     type="text"
                                     placeholder="Search Location"
-                                    className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                                     value={locationSearchTerm}
                                     onChange={handleLocationSearch}
                                 />
@@ -206,7 +205,7 @@ const filteredLocations = locations.filter(location =>
                                     <div key={location} className="p-2">
                                         <button
                                             type="button"
-                                            className="text-left w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:bg-gray-600"
+                                            className="text-left w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100"
                                             onClick={() => {
                                                 setLocation(location);
                                                 toggleLocationPopUp();
@@ -220,7 +219,7 @@ const filteredLocations = locations.filter(location =>
                             <div className="mt-6 flex justify-end">
                                 <button
                                     type="button"
-                                    className="text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                                    className="text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
                                     onClick={toggleLocationPopUp}
                                 >
                                     Close

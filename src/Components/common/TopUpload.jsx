@@ -56,10 +56,10 @@ export default function TopUpload() {
             TOP UPLOAD BARANG
           </h5>
           <p className="text-base text-black sm:text-lg">
-            Kategori barang yang paling banyak diunggah. Lihatlah <br /> barang-barang apa yang sering diunggah!
+            Kategori barang yang paling banyak diunggah.<br />Lihatlah barang-barang apa yang sering diunggah!
           </p>
         </div>
-        <div className="flex justify-center space-x-4 flex-wrap">
+        <div className="flex justify-center flex-wrap">
           {error && <div className="text-center text-red-500">{error}</div>}
           {loading ? (
             <div className="text-center">Loading...</div>
@@ -67,7 +67,7 @@ export default function TopUpload() {
             topUploads.map((upload, index) => (
               <div
                 key={upload.id}
-                className={`flex flex-col items-center bg-white shadow-lg rounded-lg py-6  my-6 ${getCardStyles(index)} m-2`}
+                className={`flex flex-col items-center bg-white shadow-lg rounded-lg py-6 mb-8 ${getCardStyles(index)} m-2`}
               >
                 <h6 className="text-xl font-bold mb-2">{upload.category}</h6>
                 <div

@@ -1,187 +1,156 @@
-// import React, { useState, useEffect, useRef } from 'react';
-// import { NavLink, useNavigate } from 'react-router-dom';
 
+import React, { useState, useEffect, useRef } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
+export default function Nav() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const navigate = useNavigate();
+  const dropdownRef = useRef(null);
+  const profileIconRef = useRef(null);
+  const drawerRef = useRef(null);
 
-// export default function Nav() {
-//     const [dropdownOpen, setDropdownOpen] = useState(false);
-//     const dropdownRef = useRef(null);
-//     const profileIconRef = useRef(null);
-
-//     const navigate = useNavigate();
-
-//     const handleDropdownToggle = () => {
-//         setDropdownOpen((prev) => !prev);
-//     };
-
-//     const handleClickOutside = (event) => {
-//         if (
-//             dropdownRef.current &&
-//             !dropdownRef.current.contains(event.target) &&
-//             profileIconRef.current &&
-//             !profileIconRef.current.contains(event.target)
-//         ) {
-//             setDropdownOpen(false);
-//         }
-//     };
-
-//     useEffect(() => {
-//         document.addEventListener('mousedown', handleClickOutside);
-
-//         return () => {
-//             document.removeEventListener('mousedown', handleClickOutside);
-//         };
-//     }, []);
-
-//     const activeLink = 'block underline underline-offset-8 py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent text-white md:p-0';
-//     const nonActiveLink = 'block text-white py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:font-black md:hover:text-white md:p-0';
-
-//     return (
-//         <div className="pt-20">
-//             <nav className="py-1.5 fixed top-0 left-0 z-50 bg-utama w-full">
-//                 <div className="px-24 flex items-center justify-between mx-auto p-4">
-//                     <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-//                         <span className="self-center text-2xl font-bold whitespace-nowrap">lookasee</span>
-//                     </a>
-
-//                     <div className="hidden md:flex items-center justify-between w-auto space-x-8">
-//                         <ul className="flex flex-col md:flex-row gap-4 md:gap-8 p-4 md:p-0 mt-4 md:mt-0 font-medium bg-gray-50 md:bg-utama rounded-lg md:rounded-none border border-gray-100 md:border-0">
-//                             <li>
-//                                 <NavLink className={({ isActive }) => (isActive ? activeLink : nonActiveLink)} to='/'>Beranda</NavLink>
-//                             </li>
-//                             <li>
-//                                 <NavLink className={({ isActive }) => (isActive ? activeLink : nonActiveLink)} to='/search'>Pencarian</NavLink>
-//                             </li>
-//                             <li>
-//                                 <NavLink className={({ isActive }) => (isActive ? activeLink : nonActiveLink)} to='/upload'>Unggah</NavLink>
-//                             </li>
-//                             <li>
-//                                 <NavLink className={({ isActive }) => (isActive ? activeLink : nonActiveLink)} to='/riwayat'>Riwayat</NavLink>
-//                             </li>
-//                             <li>
-//                                 <NavLink className={({ isActive }) => (isActive ? activeLink : nonActiveLink)} to='/message'>Pesan</NavLink>
-//                             </li>
-//                         </ul>
-//                     </div>
-
-//                     <div className="flex items-center space-x-4">
-//                         <button onClick={() => navigate("/login")} className="flex items-center bg-utama text-white font-normal rounded-full text-sm px-5 py-2">
-//                             <svg className="w-4 h-4 text-putih dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
-//                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
-//                             </svg>
-//                             <p className="p-2">Login</p>
-//                         </button>
-//                     </div>
-//                 </div>
-//             </nav>
-//         </div>
-//     );
-// }
-
-
-
-
-
-
-
-// Drawer.js
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-
-const Drawer = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
+  const handleDropdownToggle = () => {
+    setDropdownOpen((prev) => !prev);
   };
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen((prev) => !prev);
+  };
+
+  const handleClickOutside = (event) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target) &&
+      profileIconRef.current &&
+      !profileIconRef.current.contains(event.target)
+    ) {
+      setDropdownOpen(false);
+    }
+
+    if (
+      drawerRef.current &&
+      !drawerRef.current.contains(event.target)
+    ) {
+      setDrawerOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const activeLink = 'block underline underline-offset-8 py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent text-white md:p-0';
+  const nonActiveLink = 'block text-white py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:font-black md:hover:text-white md:p-0';
+
+
 
   return (
     <>
-      <button
-        onClick={toggleDrawer}
-        className="fixed top-4 left-4 z-50 p-2 text-white bg-blue-600 rounded-md md:hidden"
-      >
-        {isOpen ? (
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        ) : (
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        )}
-      </button>
+      <nav className="w-full bg-utama z-50">
+        <div className="flex mx-0 sm:mx-20 justify-between items-center p-4">
+          <a onClick={() => navigate("/")} className="text-2xl font-bold cursor-pointer">lookasee</a>
 
-      <div
-        className={`fixed top-0 left-0 w-64 h-full bg-gray-800 text-white transform ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 ease-in-out z-40`}
-      >
-        <button
-          onClick={toggleDrawer}
-          className="absolute top-4 right-4 p-2 text-white"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-        <ul className="mt-12 px-4">
-          <li>
-           
-          </li>
-          <li>
-            <NavLink
-              to="/riwayat"
-              className="block py-2 px-4 hover:bg-gray-700 rounded"
-            >
-              Riwayat
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/message"
-              className="block py-2 px-4 hover:bg-gray-700 rounded"
-            >
-              Pesan
-            </NavLink>
-          </li>
-        </ul>
-      </div>
+          <div className="hidden items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+            <ul className="flex flex-col gap-x-1 p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-utama">
+              <li>
+                <NavLink className={({ isActive }) => (isActive ? activeLink : nonActiveLink)} to='/'>Beranda</NavLink>
+              </li>
+              <li>
+                <NavLink className={({ isActive }) => (isActive ? activeLink : nonActiveLink)} to='/search'>Pencarian</NavLink>
+              </li>
+              <li>
+                <NavLink className={({ isActive }) => (isActive ? activeLink : nonActiveLink)} to='/upload'>Unggah</NavLink>
+              </li>
+              <li>
+                <NavLink className={({ isActive }) => (isActive ? activeLink : nonActiveLink)} to='/riwayat'>Riwayat</NavLink>
+              </li>
+              <li>
+                <NavLink className={({ isActive }) => (isActive ? activeLink : nonActiveLink)} to='/message'>Pesan</NavLink>
+              </li>
+            </ul>
+          </div>
+          {/* Desktop Menu */}
+
+          <div className="hidden sm:block  flex md:order-2 items-center space-x-4 ">
+
+            <button onClick={() => navigate("/login")} className="flex items-center bg-utama text-white font-normal rounded-full text-sm px-5 py-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"
+                />
+              </svg>
+              <p className="p-2">Login</p>
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          <button onClick={handleDrawerToggle} className="md:hidden p-2 text-white bg-blue-500 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          {/* Drawer */}
+          {drawerOpen && (
+            <div ref={drawerRef} className="fixed top-0 left-0 w-64 h-full bg-gray-800 text-white transition-transform transform translate-x-0 z-40">
+              <button onClick={handleDrawerToggle} className="absolute top-4 right-4 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <div className="p-4">
+                <h2 className="text-xl font-bold">Menu</h2>
+                <ul className="mt-4">
+                  <li>
+                    <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/'>Beranda</NavLink>
+                  </li>
+                  <li>
+                    <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/search'>Pencarian</NavLink>
+                  </li>
+                  <li>
+                    <button onClick={() => navigate("/login")} className="flex items-center py-12 px-4 text-gray-300 hover:text-white">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-6 h-6 mr-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"
+                        />
+                      </svg>
+                      Login
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
     </>
   );
-};
+}
 
-export default Drawer;
+
+
+
+

@@ -67,7 +67,7 @@ export default function TopUpload() {
             topUploads.map((upload, index) => (
               <div
                 key={upload.id}
-                className={`flex flex-col items-center bg-white shadow-lg rounded-lg py-6 ${getCardStyles(index)} m-2`}
+                className={`flex flex-col items-center bg-white shadow-lg rounded-lg py-6  my-6 ${getCardStyles(index)} m-2`}
               >
                 <h6 className="text-xl font-bold mb-2">{upload.category}</h6>
                 <div

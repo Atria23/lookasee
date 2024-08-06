@@ -1,19 +1,17 @@
-import ProfileNav from '../profile/ProfileNav'; // Pastikan path ini sesuai dengan struktur direktori
-import { useNavigate } from "react-router-dom";
+import ProfileNav from '../profile/ProfileNav'; 
 
 export default function Conditions() {
-    const navigate = useNavigate();
-
-
     return (
         <>
-      <div className="flex h-full overflow-hidden ">
-        <ProfileNav />
-        <div className="flex-1 p-2  ">
-          <div className="w-full rounded-lg shadow-lg p-8 overflow-auto ">
-            <h1 className="text-2xl font-semibold mb-2">Privasi & Keamanan</h1>
-            <div className="border border-black mb-6 "></div>
-            <div className="bg-blue-100 p-6 rounded-lg">
+      <div className="flex flex-col md:flex-row h-full overflow-hidden">
+      <ProfileNav />
+      <div className="flex-1 p-2">
+        <div className="w-full bg-white rounded-lg shadow-lg p-6 sm:p-8">
+          <h1 className="text-xl sm:text-2xl font-semibold mb-2 text-center md:text-left">
+          Privasi & Keamanan
+          </h1>
+          <div className="border border-black mb-6"></div>
+          <div className="bg-blue-100 p-4 sm:p-6 rounded-lg">
               <div className="w-full overflow-auto max-h-96 scrollable-content">
                 <div className="list-none text-gray-600 flex flex-col">
                   <h1 className="block text-gray-700 font-bold"> Privasi Terjamin</h1>

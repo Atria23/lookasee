@@ -1,170 +1,146 @@
-// import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from '../client';
+import ProfileNav from '../Components/profile/ProfileNav';
 
-// const App = () => {
-//   return (
-//     <div className="flex h-screen items-center justify-center">
-//       <div className="flex w-4/5 h-3/4">
-//         <div className="flex-1  p-4">
-//           <div className="h-3/5 bg-white p-4 flex items-center justify-center drop-shadow-xl">
-//             {/* Konten kotak pertama */}
-//             Kotak 1
-//           </div>
-//         </div>
-//         <div className="flex-1  p-4">
-//           <div className="h-full bg-white p-4 flex items-center justify-center drop-shadow-xl">
-//             {/* Konten kotak kedua */}
-//             Kotak 2
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+const ResetPasswordPage = () => {
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState(null);
 
-// export default App;
+  useEffect(() => {
+    const getUserData = async () => {
+      const { data, error } = await supabase.auth.getSession();
 
+      if (error) {
+        setError('Tidak dapat mendapatkan sesi pengguna: ' + error.message);
+      } else {
+        setUser(data.session.user);
+      }
+    };
 
+    getUserData();
+  }, []);
 
+  const handlePasswordReset = async () => {
+    setError(null);
+    setSuccess(false);
 
+    if (newPassword !== confirmPassword) {
+      setError('Kata sandi baru tidak cocok.');
+      return;
+    }
 
+    if (!user) {
+      setError('Pengguna tidak terdeteksi.');
+      return;
+    }
 
+    try {
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: currentPassword,
+      });
 
+      if (signInError) {
+        setError('Kata sandi saat ini salah.');
+        return;
+      }
 
+      const { error: updateError } = await supabase.auth.updateUser({
+        password: newPassword,
+      });
 
-
-
-
-
-
-
-
-
-
-// import ProfileNav from "../Components/profile/ProfileNav";
-// import { useNavigate } from "react-router-dom";
-
-// export default function Conditions() {
-//   const navigate = useNavigate();
-
-
-//   return (
-//     <>
-//       <div className="flex h-full overflow-hidden ">
-//         <ProfileNav />
-//         <div className="flex-1 overflow-auto pb-24">
-//                     <div className="w-full rounded-lg shadow-lg p-8 overflow-auto ">
-//                         <h1 className="text-2xl font-semibold mb-2">Privasi & Keamanan</h1>
-//                         <div className="border border-black mb-6 "></div>
-//                         <div className="bg-blue-100 pb-24 p-6 rounded-lg">
-//                           {/* <div className="max-h-96 scrollable-content"> */}
-//                           <div className="max-h-96 scrollable-content">
-//                             <h1 className="block text-gray-700 font-bold"> Privasi Terjamin</h1>
-//                             <p className="mb-4 ">Kami menjaga privasi Anda dengan serius. Data pribadi Anda aman bersama kami, dan kami tidak akan membagikannya dengan pihak ketiga tanpa izin Anda.</p>
-
-//                             <h1 className="block text-gray-700 font-bold"> Keamanan Data</h1>
-//                             <p className="mb-4 ">Aplikasi kami dilengkapi dengan enkripsi tingkat tinggi untuk melindungi data Anda dari akses yang tidak sah. Setiap informasi yang Anda masukkan terlindungi dengan baik.</p>
-
-//                             <h1 className="block text-gray-700 font-bold"> Perlindungan Privasi</h1>
-//                             <p className="mb-4 ">Nikmati pencarian barang tanpa khawatir. Privasi Anda adalah prioritas kami, dan kami selalu berusaha memastikan bahwa informasi Anda tetap aman dan rahasia.</p>
-
-//                             <h1 className="block text-gray-700 font-bold"> Keamanan Terbaik</h1>
-//                             <p className="mb-4 ">Dengan teknologi keamanan terkini, kami memastikan data Anda selalu terlindungi. Protokol keamanan berlapis kami dirancang untuk menjaga integritas dan kerahasiaan data Anda.</p>
-
-//                             <h1 className="block text-gray-700 font-bold"> Privasi</h1>
-//                             <p className="mb-4 ">Informasi pribadi Anda hanya digunakan untuk keperluan pencarian dan tidak dibagikan kepada pihak ketiga. Kami berkomitmen untuk menjaga kerahasiaan data Anda.</p>
-
-//                             <h1 className="block text-gray-700 font-bold"> Pengamanan Data</h1>
-//                             <p className="mb-4 ">Kami menggunakan sistem pengamanan data berlapis untuk memastikan tidak ada celah keamanan. Setiap lapisan keamanan dirancang untuk melindungi informasi Anda dari ancaman potensial.</p>
-
-//                             <h1 className="block text-gray-700 font-bold"> Privasi dan Keamanan Maksimal</h1>
-//                             <p className="mb-4 ">Setiap pencarian yang Anda lakukan dilindungi dengan protokol keamanan terbaik. Kami memastikan bahwa aktivitas Anda dalam aplikasi kami selalu aman.</p>
-
-//                             <h1 className="block text-gray-700 font-bold"> Aman dan Terpercaya</h1>
-//                             <p className="mb-4 ">Keamanan informasi pribadi Anda adalah tanggung jawab utama kami. Kami berusaha keras untuk memastikan bahwa data Anda tidak akan jatuh ke tangan yang salah.</p>
-
-//                             <h1 className="block text-gray-700 font-bold"> Privasi Anda, Prioritas Kami</h1>
-//                             <p className="mb-4 ">Kami berkomitmen untuk melindungi privasi dan keamanan data Anda dalam setiap langkah pencarian. Dengan kebijakan privasi yang ketat, kami memastikan bahwa data Anda hanya digunakan untuk keperluan yang telah Anda setujui.</p>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>
-//       </div>
-//     </>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-import ProfileNav from "../Components/profile/ProfileNav";
-import { useNavigate } from "react-router-dom";
-
-export default function Conditions() {
-  const navigate = useNavigate();
-
+      if (updateError) {
+        setError('Gagal memperbarui kata sandi: ' + updateError.message);
+      } else {
+        setSuccess(true);
+      }
+    } catch (error) {
+      setError('Kesalahan tidak terduga: ' + error.message);
+    }
+  };
 
   return (
-    <>
-      <div className="flex h-full overflow-hidden ">
-        <ProfileNav />
-        <div className="flex-1 overflow-auto pb-24">
-          <div className="w-full rounded-lg shadow-lg p-8 overflow-auto ">
-            <h1 className="text-2xl font-semibold mb-2">Privasi & Keamanan</h1>
-            <div className="border border-black mb-6 "></div>
-            <div className="bg-blue-100 p-6 rounded-lg">
-              <div className="w-full overflow-auto max-h-96 scrollable-content">
-                <div className="list-none text-gray-600 flex flex-col">
-                  <h1 className="block text-gray-700 font-bold"> Privasi Terjamin</h1>
-                  <p className="mb-4 ">Kami menjaga privasi Anda dengan serius. Data pribadi Anda aman bersama kami, dan kami tidak akan membagikannya dengan pihak ketiga tanpa izin Anda.</p>
+    <div className="flex flex-col md:flex-row h-full overflow-hidden">
+      <ProfileNav />
+      <div className="flex-1 p-2">
+        <div className="w-full bg-white rounded-lg shadow-lg p-6 sm:p-8">
+          <h1 className="text-xl sm:text-2xl font-semibold mb-2 text-center md:text-left">
+            Atur Sandi
+          </h1>
+          <div className="border border-black mb-6"></div>
+          <div className="bg-blue-100 p-4 sm:p-6 rounded-lg">
+            <p className="mb-4 text-red-500 text-sm sm:text-base">
+              Kata sandi Anda harus paling tidak 6 karakter.
+            </p>
 
-                  <h1 className="block text-gray-700 font-bold"> Keamanan Data</h1>
-                  <p className="mb-4 ">Aplikasi kami dilengkapi dengan enkripsi tingkat tinggi untuk melindungi data Anda dari akses yang tidak sah. Setiap informasi yang Anda masukkan terlindungi dengan baik.</p>
-
-                  <h1 className="block text-gray-700 font-bold"> Perlindungan Privasi</h1>
-                  <p className="mb-4 ">Nikmati pencarian barang tanpa khawatir. Privasi Anda adalah prioritas kami, dan kami selalu berusaha memastikan bahwa informasi Anda tetap aman dan rahasia.</p>
-
-                  <h1 className="block text-gray-700 font-bold"> Keamanan Terbaik</h1>
-                  <p className="mb-4 ">Dengan teknologi keamanan terkini, kami memastikan data Anda selalu terlindungi. Protokol keamanan berlapis kami dirancang untuk menjaga integritas dan kerahasiaan data Anda.</p>
-
-                  <h1 className="block text-gray-700 font-bold"> Privasi</h1>
-                  <p className="mb-4 ">Informasi pribadi Anda hanya digunakan untuk keperluan pencarian dan tidak dibagikan kepada pihak ketiga. Kami berkomitmen untuk menjaga kerahasiaan data Anda.</p>
-
-                  <h1 className="block text-gray-700 font-bold"> Pengamanan Data</h1>
-                  <p className="mb-4 ">Kami menggunakan sistem pengamanan data berlapis untuk memastikan tidak ada celah keamanan. Setiap lapisan keamanan dirancang untuk melindungi informasi Anda dari ancaman potensial.</p>
-
-                  <h1 className="block text-gray-700 font-bold"> Privasi dan Keamanan Maksimal</h1>
-                  <p className="mb-4 ">Setiap pencarian yang Anda lakukan dilindungi dengan protokol keamanan terbaik. Kami memastikan bahwa aktivitas Anda dalam aplikasi kami selalu aman.</p>
-
-                  <h1 className="block text-gray-700 font-bold"> Aman dan Terpercaya</h1>
-                  <p className="mb-4 ">Keamanan informasi pribadi Anda adalah tanggung jawab utama kami. Kami berusaha keras untuk memastikan bahwa data Anda tidak akan jatuh ke tangan yang salah.</p>
-
-                  <h1 className="block text-gray-700 font-bold"> Privasi Anda, Prioritas Kami</h1>
-                  <p className="mb-4 ">Kami berkomitmen untuk melindungi privasi dan keamanan data Anda dalam setiap langkah pencarian. Dengan kebijakan privasi yang ketat, kami memastikan bahwa data Anda hanya digunakan untuk keperluan yang telah Anda setujui.</p>
-
-                </div>
-              </div>
+            {/* Input Kata Sandi Saat Ini */}
+            <div className="mb-4">
+              <label
+                htmlFor="currentPassword"
+                className="block text-gray-700 font-bold text-sm sm:text-base"
+              >
+                Kata Sandi Saat Ini
+              </label>
+              <input
+                type="password"
+                id="currentPassword"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-lg"
+              />
             </div>
+
+            {/* Input Kata Sandi Baru */}
+            <div className="mb-4">
+              <label
+                htmlFor="newPassword"
+                className="block text-gray-700 font-bold text-sm sm:text-base"
+              >
+                Kata Sandi Baru
+              </label>
+              <input
+                type="password"
+                id="newPassword"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-lg"
+              />
+            </div>
+
+            {/* Input Konfirmasi Kata Sandi */}
+            <div className="mb-4">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-gray-700 font-bold text-sm sm:text-base"
+              >
+                Konfirmasi Kata Sandi Baru
+              </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-lg"
+              />
+            </div>
+
+            <button
+              onClick={handlePasswordReset}
+              className="w-full p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300"
+            >
+              Simpan Perubahan
+            </button>
+            {error && <p className="text-red-500 mt-4">{error}</p>}
+            {success && <p className="text-green-500 mt-4">Kata sandi berhasil diperbarui!</p>}
           </div>
         </div>
       </div>
-      <style>{`
-        /* Add this CSS to your global styles or a CSS module */
-        .scrollable-content {
-          scrollbar-width: none; /* For Firefox */
-        }
-
-        .scrollable-content::-webkit-scrollbar {
-          display: none; /* For WebKit browsers */
-        }
-      `}</style>
-    </>
+    </div>
   );
-}
+};
+
+export default ResetPasswordPage;

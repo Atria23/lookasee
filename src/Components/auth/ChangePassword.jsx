@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../client';
 import ProfileNav from '../profile/ProfileNav'; // Pastikan path ini sesuai dengan struktur direktori
@@ -64,18 +65,27 @@ const ResetPasswordPage = () => {
   };
 
   return (
-    <div className="flex h-full overflow-hidden ">
+    <div className="flex flex-col md:flex-row h-full overflow-hidden">
       <ProfileNav />
-      <div className="flex-1 p-2 ">
-        <div className="w-full bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-2xl font-semibold mb-2 ">Atur Sandi</h1>
-          <div className="border border-black mb-8"></div>
-          <div className="bg-blue-100 p-6 rounded-lg">
-            <p className="mb-4 text-red-500">Kata sandi Anda harus paling tidak 6 karakter.</p>
+      <div className="flex-1 p-2">
+        <div className="w-full bg-white rounded-lg shadow-lg p-6 sm:p-8">
+          <h1 className="text-xl sm:text-2xl font-semibold mb-2 text-center md:text-left">
+            Atur Sandi
+          </h1>
+          <div className="border border-black mb-6"></div>
+          <div className="bg-blue-100 p-4 sm:p-6 rounded-lg">
+            <p className="mb-4 text-red-500 text-sm sm:text-base">
+              Kata sandi Anda harus paling tidak 6 karakter.
+            </p>
 
             {/* Input Kata Sandi Saat Ini */}
-            <div className="mb-4 ">
-              <label htmlFor="currentPassword" className="block text-gray-700 font-bold">Kata Sandi Saat Ini</label>
+            <div className="mb-4">
+              <label
+                htmlFor="currentPassword"
+                className="block text-gray-700 font-bold text-sm sm:text-base"
+              >
+                Kata Sandi Saat Ini
+              </label>
               <input
                 type="password"
                 id="currentPassword"
@@ -87,7 +97,12 @@ const ResetPasswordPage = () => {
 
             {/* Input Kata Sandi Baru */}
             <div className="mb-4">
-              <label htmlFor="newPassword" className="block text-gray-700 font-bold">Kata Sandi Baru</label>
+              <label
+                htmlFor="newPassword"
+                className="block text-gray-700 font-bold text-sm sm:text-base"
+              >
+                Kata Sandi Baru
+              </label>
               <input
                 type="password"
                 id="newPassword"
@@ -99,7 +114,12 @@ const ResetPasswordPage = () => {
 
             {/* Input Konfirmasi Kata Sandi */}
             <div className="mb-4">
-              <label htmlFor="confirmPassword" className="block text-gray-700 font-bold">Konfirmasi Kata Sandi Baru</label>
+              <label
+                htmlFor="confirmPassword"
+                className="block text-gray-700 font-bold text-sm sm:text-base"
+              >
+                Konfirmasi Kata Sandi Baru
+              </label>
               <input
                 type="password"
                 id="confirmPassword"
@@ -111,7 +131,7 @@ const ResetPasswordPage = () => {
 
             <button
               onClick={handlePasswordReset}
-              className="w-full p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              className="w-full p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300"
             >
               Simpan Perubahan
             </button>

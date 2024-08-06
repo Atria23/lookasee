@@ -271,7 +271,7 @@ export default function LatestUpload() {
       <section className="mx-auto w-full py-16 px-4 sm:px-9 bg-utama relative">
         <div className="text-center pb-16">
           <h5 className="mb-3 text-3xl font-bold text-white">AKHIR-AKHIR INI</h5>
-          <p className="text-base text-white sm:text-lg dark:text-gray-400">
+          <p className="text-base text-white sm:text-lg">
             Di bawah ini beberapa barang yang
             <br />
             baru diunggah

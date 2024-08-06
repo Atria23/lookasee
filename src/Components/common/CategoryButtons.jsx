@@ -131,10 +131,10 @@ export default function Kategori() {
   return (
     <section className="mx-auto w-full max-w-screen-lg py-16">
       <div className="text-center pb-8">
-        <h5 className="mb-3 text-3xl font-bold text-black dark:text-white">
+        <h5 className="mb-3 text-3xl font-bold text-black">
           Kategori Pencarian
         </h5>
-        <p className="text-base text-black sm:text-lg dark:text-gray-400">
+        <p className="text-base text-black sm:text-lg">
           Di bawah ini beberapa kategori barang yang mungkin
           <br />
           sedang kamu cari

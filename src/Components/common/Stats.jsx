@@ -52,22 +52,22 @@ export default function HomePage() {
     <section className="mx-auto w-full py-16 px-9 bg-utama">
       <div className="flex justify-center space-x-40">
         <div className="flex flex-col items-center">
-          <img src="public/images/lost-item.svg" alt="Barang Hilang" className="w-20 h-20 mb-3" />
+          <img src="/images/lost-item.svg" alt="Barang Hilang" className="w-20 h-20 mb-3" />
           <span className="text-black text-3xl font-bold">{jumlahBarangHilang}</span>
           <span className="text-black text-lg">Barang Hilang</span>
         </div>
         <div className="flex flex-col items-center">
-          <img src="public/images/item-found.svg" alt="Barang Ditemukan" className="w-20 h-20 mb-3" />
+          <img src="/images/item-found.svg" alt="Barang Ditemukan" className="w-20 h-20 mb-3" />
           <span className="text-black text-3xl font-bold">{jumlahBarangDitemukan}</span>
           <span className="text-black text-lg">Barang Ditemukan</span>
         </div>
         <div className="flex flex-col items-center">
-          <img src="public/images/user.svg" alt="Pengguna" className="w-20 h-20 mb-3" />
+          <img src="/images/user.svg" alt="Pengguna" className="w-20 h-20 mb-3" />
           <span className="text-black text-3xl font-bold">{jumlahPengguna}</span>
           <span className="text-black text-lg">Pengguna</span>
         </div>
         <div className="flex flex-col items-center">
-          <img src="public/images/return.svg" alt="Barang Dikembalikan" className="w-20 h-20 mb-3" />
+          <img src="/images/return.svg" alt="Barang Dikembalikan" className="w-20 h-20 mb-3" />
           <span className="text-black text-3xl font-bold">{jumlahBarangDikembalikan}</span>
           <span className="text-black text-lg">Barang Kembali Ke Pemilik</span>
         </div>

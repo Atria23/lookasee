@@ -80,7 +80,7 @@
 //                 >
 //                   <Link to={`/detailbarang/${product.id}`}>
 //                     <img
-//                       src={product.image_url || "public/images/hero.png"}
+//                       src={product.image_url || "/images/hero.png"}
 //                       alt={product.item_name}
 //                       className="w-full h-full object-cover rounded-lg"
 //                     />
@@ -238,7 +238,7 @@ export default function LatestUpload() {
                 >
                   <Link to={`/detailbarang/${product.id}`}>
                     <img
-                      src={product.image_url || "public/images/hero.png"}
+                      src={product.image_url || "/images/hero.png"}
                       alt={product.item_name}
                       className="w-full h-full object-cover rounded-lg"
                     />

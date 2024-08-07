@@ -806,16 +806,16 @@ function EditProfileForm({ userData, onCancel, onSubmit }) {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-row mx-auto">
+          <div className="flex md:items-center md:justify-start md:space-x-4">
             <button
-              className="bg-blue-500 mx-auto text-white py-2 px-10 rounded-lg hover:bg-blue-600"
+              className="bg-blue-500 mx-auto md:mx-0 text-white py-2 px-8 rounded-lg hover:bg-blue-600"
               onClick={handleSubmit}
               disabled={!emailValid || !phoneNumberValid}
             >
               Simpan
             </button>
             <button
-              className="bg-gray-300 mx-auto text-black py-2 px-10 rounded-lg hover:bg-gray-400"
+              className="bg-gray-300 mx-auto md:mx-0 text-black py-2 px-8 rounded-lg hover:bg-gray-400"
               onClick={onCancel}
             >
               Batal

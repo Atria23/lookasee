@@ -665,11 +665,11 @@ function EditProfileForm({ userData, onCancel, onSubmit }) {
 
   return (
     <div className="w-full bg-white rounded-lg shadow-lg p-6 sm:p-8">
-      <h1 className="text-xl sm:text-2xl font-semibold mb-2 text-center md:text-left">
-        Edit Profil
-      </h1>
-      <div className="border border-black mb-6"></div>
-      <div className="flex flex-col lg:flex-row bg-blue-100 ml-4 py-12 p-6 rounded-lg">
+            <h1 className="text-xl sm:text-2xl font-semibold mb-2 text-center md:text-left">
+              Profil
+            </h1>
+            <div className="border border-black mb-6"></div>
+            <div className="flex flex-col lg:flex-row bg-blue-100 py-8 px-6 rounded-lg">
         {/* Image Upload Section */}
         <div className="flex flex-col items-center lg:w-1/3 mb-8 lg:mb-0">
           <div className="rounded-lg">

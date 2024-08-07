@@ -169,8 +169,6 @@
 
 
 
-
-
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'; // Import NavLink
 import { useAuth } from "../common/AuthProvider";
@@ -189,14 +187,18 @@ export default function ProfileNav({ onLogout }) {
   });
 
   useEffect(() => {
+    console.log("User object:", user); // Log user object to ensure it's valid
+  }, [user]);
+
+  useEffect(() => {
     const fetchUserData = async () => {
-      if (user && user.id) {
+      if (user && user.id) { // Ensure user and user.id are available
         try {
           const { data, error, count } = await supabase
             .from('users')
             .select('*', { count: 'exact' })
             .eq('id', user.id) // Use ID as filter
-            .limit(1); // Ensure we only fetch one record
+            .limit(1); // Ensure we only fetch one record 
 
           if (error) {
             console.error("Error fetching user data:", error.message);

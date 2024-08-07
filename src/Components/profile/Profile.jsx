@@ -473,8 +473,9 @@ export default function Profile() {
     setIsEditing(false);
   };
 
+
+
   const handleSubmitEdit = async (updatedUserData) => {
-    // Implement your update logic here
     try {
       const { data: { session } } = await supabase.auth.getSession();
       const user = session?.user;
@@ -491,19 +492,32 @@ export default function Profile() {
             profile_picture: profilePicture
           };
 
-          const { error } = await supabase
+          // Update user profile in 'users' table
+          const { error: usersError } = await supabase
             .from('users')
-            .upsert({ id: user.id, ...updatedUser }) && await supabase.auth.updateUser({
-              email: email,
-            })
+            .upsert({ id: user.id, ...updatedUser });
 
-          if (error) {
-            console.error('Error updating profile:', error.message);
-            alert('Error updating profile');
-          } else {
-            setUserData(updatedUserData);
-            setIsEditing(false);
+          if (usersError) {
+            console.error('Error updating profile in users table:', usersError.message);
+            alert('Error updating profile in users table');
+            return;
           }
+
+          // Update email in 'auth' table using SQL function
+          const { error: sqlError } = await supabase.rpc('update_user_email', {
+            user_id: user.id,
+            new_email: email
+          });
+
+          if (sqlError) {
+            console.error('Error updating email in auth table:', sqlError.message);
+            alert('Error updating email in auth table');
+            return;
+          }
+
+          // Successfully updated both tables
+          setUserData(updatedUserData);
+          setIsEditing(false);
         } else {
           alert('Please fill all fields correctly!');
         }
@@ -515,6 +529,9 @@ export default function Profile() {
       alert('Error fetching user session');
     }
   };
+
+
+
 
   let profilePicture;
 
@@ -647,168 +664,166 @@ function EditProfileForm({ userData, onCancel, onSubmit }) {
   };
 
   return (
-    <div className="overflow-hidden shadow-lg rounded-lg">
-      <div className="w-full bg-white rounded-lg shadow-lg p-6 sm:p-8">
-          <h1 className="text-xl sm:text-2xl font-semibold mb-2 text-center md:text-left">
-            Edit Profil
-          </h1>
-          <div className="border border-black mb-6"></div>
-        <div className="flex flex-col lg:flex-row bg-blue-100 ml-4 py-12 p-6 rounded-lg">
-          {/* Image Upload Section */}
-          <div className="flex flex-col items-center lg:w-1/3 mb-8 lg:mb-0">
-            <div className="rounded-lg">
-              <div className="bg-gray-300 ">
-                <div className="w-64 h-64 relative">
-                  <label
-                    htmlFor="dropzone-file"
-                    className="h-full w-full border-2 border-gray-300 border-dashed rounded-full cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 flex items-center justify-center"
-                  >
-                    {previewUrl ? (
-                      <div className="w-full h-full overflow-hidden rounded-full">
-                        <img
-                          src={previewUrl}
-                          alt="Preview"
-                          className="object-cover h-full w-full"
+    <div className="w-full bg-white rounded-lg shadow-lg p-6 sm:p-8">
+      <h1 className="text-xl sm:text-2xl font-semibold mb-2 text-center md:text-left">
+        Edit Profil
+      </h1>
+      <div className="border border-black mb-6"></div>
+      <div className="flex flex-col lg:flex-row bg-blue-100 ml-4 py-12 p-6 rounded-lg">
+        {/* Image Upload Section */}
+        <div className="flex flex-col items-center lg:w-1/3 mb-8 lg:mb-0">
+          <div className="rounded-lg">
+            <div className="bg-gray-300 ">
+              <div className="w-64 h-64 relative">
+                <label
+                  htmlFor="dropzone-file"
+                  className="h-full w-full border-2 border-gray-300 border-dashed rounded-full cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 flex items-center justify-center"
+                >
+                  {previewUrl ? (
+                    <div className="w-full h-full overflow-hidden rounded-full">
+                      <img
+                        src={previewUrl}
+                        alt="Preview"
+                        className="object-cover h-full w-full"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center">
+                      <svg
+                        className="w-8 h-8 mb-2 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 16"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                         />
-                      </div>
-                    ) : (
-                      <div className="flex flex-col items-center">
-                        <svg
-                          className="w-8 h-8 mb-2 text-gray-500 dark:text-gray-400"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 20 16"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                          />
-                        </svg>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold">Pilih Gambar</span>
-                        </p>
-                      </div>
-                    )}
-                    <input
-                      id="dropzone-file"
-                      type="file"
-                      className="hidden"
-                      onChange={handleFileChange}
-                      accept="image/*"
-                    />
-                  </label>
-                </div>
+                      </svg>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                        <span className="font-semibold">Pilih Gambar</span>
+                      </p>
+                    </div>
+                  )}
+                  <input
+                    id="dropzone-file"
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    accept="image/*"
+                  />
+                </label>
               </div>
             </div>
-            <p className="text-xs text-gray-500">Ukuran gambar: maks. 1 MB</p>
-            <p className="text-xs text-gray-500">Format gambar: JPEG, JPG, PNG</p>
           </div>
-  
-          {/* Form Section */}
-          <div className="lg:w-2/3 lg:pl-20">
-            {/* Nama Input */}
-            <div className="mb-8 flex items-center">
-              <label htmlFor="name" className="w-1/4 block text-gray-700 font-bold">
-                Nama:
-              </label>
-              <input
-                type="text"
-                maxLength={30}
-                id="name"
-                className="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ml-2"
-                required
-                placeholder="Masukkan Nama Terbaru Anda"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-  
-            {/* Email Input */}
-            <div className="flex items-center">
-              <label htmlFor="email" className="w-1/4 block text-gray-700 font-bold">
-                Email:
-              </label>
-              <input
-                type="email"
-                maxLength={50}
-                id="email"
-                className="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ml-2"
-                required
-                placeholder="Masukkan Email Terbaru Anda"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="mb-8 flex items-center">
-              <div className="w-1/4 text-gray-700"></div>
-              {!emailValid && (
-                <p className="text-red-500 text-sm w-full ml-2">Email tidak valid</p>
-              )}
-            </div>
-  
-            {/* No. Telp Input */}
-            <div className="flex items-center">
-              <label htmlFor="phone-number" className="w-1/4 block text-gray-700 font-bold">
-                No. Telp:
-              </label>
-              <input
-                type="number"
-                id="phone-number"
-                className="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ml-2"
-                required
-                placeholder="Masukkan Nomor Terbaru Anda"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-            </div>
-            <div className="mb-8 flex items-center">
-              <div className="w-1/4 text-gray-700"></div>
-              {!phoneNumberValid && (
-                <p className="text-red-500 text-sm w-full ml-2">Nomor telepon tidak valid</p>
-              )}
-            </div>
-  
-            {/* Alamat Input */}
-            <div className="mb-8 flex items-center">
-              <label htmlFor="address" className="w-1/4 block text-gray-700 font-bold">
-                Alamat:
-              </label>
-              <input
-                type="text"
-                maxLength={400}
-                id="address"
-                className="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ml-2"
-                required
-                placeholder="Masukkan Alamat Terbaru Anda"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
-  
-            {/* Buttons */}
-            <div className="flex justify-start space-x-4">
-              <button
-                className="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600"
-                onClick={handleSubmit}
-                disabled={!emailValid || !phoneNumberValid}
-              >
-                Simpan
-              </button>
-              <button
-                className="bg-gray-300 text-black py-2 px-6 rounded-lg hover:bg-gray-400"
-                onClick={onCancel}
-              >
-                Batal
-              </button>
-            </div>
+          <p className="text-xs text-gray-500">Ukuran gambar: maks. 1 MB</p>
+          <p className="text-xs text-gray-500">Format gambar: JPEG, JPG, PNG</p>
+        </div>
+
+        {/* Form Section */}
+        <div className="lg:w-2/3 lg:pl-20">
+          {/* Nama Input */}
+          <div className="mb-8 flex items-center">
+            <label htmlFor="name" className="w-1/4 block text-gray-700 font-bold">
+              Nama:
+            </label>
+            <input
+              type="text"
+              maxLength={30}
+              id="name"
+              className="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ml-2"
+              required
+              placeholder="Masukkan Nama Terbaru Anda"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+
+          {/* Email Input */}
+          <div className="flex items-center">
+            <label htmlFor="email" className="w-1/4 block text-gray-700 font-bold">
+              Email:
+            </label>
+            <input
+              type="email"
+              maxLength={50}
+              id="email"
+              className="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ml-2"
+              required
+              placeholder="Masukkan Email Terbaru Anda"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="mb-8 flex items-center">
+            <div className="w-1/4 text-gray-700"></div>
+            {!emailValid && (
+              <p className="text-red-500 text-sm w-full ml-2">Email tidak valid</p>
+            )}
+          </div>
+
+          {/* No. Telp Input */}
+          <div className="flex items-center">
+            <label htmlFor="phone-number" className="w-1/4 block text-gray-700 font-bold">
+              No. Telp:
+            </label>
+            <input
+              type="number"
+              id="phone-number"
+              className="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ml-2"
+              required
+              placeholder="Masukkan Nomor Terbaru Anda"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+          </div>
+          <div className="mb-8 flex items-center">
+            <div className="w-1/4 text-gray-700"></div>
+            {!phoneNumberValid && (
+              <p className="text-red-500 text-sm w-full ml-2">Nomor telepon tidak valid</p>
+            )}
+          </div>
+
+          {/* Alamat Input */}
+          <div className="mb-8 flex items-center">
+            <label htmlFor="address" className="w-1/4 block text-gray-700 font-bold">
+              Alamat:
+            </label>
+            <input
+              type="text"
+              maxLength={400}
+              id="address"
+              className="bg-gray-50 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 ml-2"
+              required
+              placeholder="Masukkan Alamat Terbaru Anda"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+
+          {/* Buttons */}
+          <div className="flex flex-row mx-auto">
+            <button
+              className="bg-blue-500 mx-auto text-white py-2 px-10 rounded-lg hover:bg-blue-600"
+              onClick={handleSubmit}
+              disabled={!emailValid || !phoneNumberValid}
+            >
+              Simpan
+            </button>
+            <button
+              className="bg-gray-300 mx-auto text-black py-2 px-10 rounded-lg hover:bg-gray-400"
+              onClick={onCancel}
+            >
+              Batal
+            </button>
           </div>
         </div>
       </div>
     </div>
   );
-  
+
 }

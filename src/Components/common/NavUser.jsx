@@ -20,6 +20,8 @@ const Nav = () => {
     });
 
     useEffect(() => {
+        console.log("User ID:", user?.id); // Debug: Check user ID
+
         const fetchUserData = async () => {
             if (user && user.id) {
                 try {

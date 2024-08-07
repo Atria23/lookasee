@@ -1,146 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from '../client';
-import ProfileNav from '../Components/profile/ProfileNav';
+import React, { useState } from 'react';
+import { supabase } from '../client'; // Pastikan path ini benar
 
-const ResetPasswordPage = () => {
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+const UpdateEmail = () => {
+  const [email, setEmail] = useState('');
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const [user, setUser] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-  useEffect(() => {
-    const getUserData = async () => {
-      const { data, error } = await supabase.auth.getSession();
+  const handleUpdateEmail = async () => {
+    const { data: session, error: sessionError } = await supabase.auth.getSession();
 
-      if (error) {
-        setError('Tidak dapat mendapatkan sesi pengguna: ' + error.message);
-      } else {
-        setUser(data.session.user);
-      }
-    };
-
-    getUserData();
-  }, []);
-
-  const handlePasswordReset = async () => {
-    setError(null);
-    setSuccess(false);
-
-    if (newPassword !== confirmPassword) {
-      setError('Kata sandi baru tidak cocok.');
+    if (sessionError) {
+      setError('Error fetching session');
       return;
     }
 
+    const user = session?.session?.user;
     if (!user) {
-      setError('Pengguna tidak terdeteksi.');
+      setError('User not logged in');
       return;
     }
 
     try {
-      const { error: signInError } = await supabase.auth.signInWithPassword({
-        email: user.email,
-        password: currentPassword,
+      const response = await fetch('/api/updateEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: user.id,
+          newEmail: email,
+        }),
       });
 
-      if (signInError) {
-        setError('Kata sandi saat ini salah.');
-        return;
-      }
+      const result = await response.json();
 
-      const { error: updateError } = await supabase.auth.updateUser({
-        password: newPassword,
-      });
-
-      if (updateError) {
-        setError('Gagal memperbarui kata sandi: ' + updateError.message);
+      if (response.ok) {
+        setSuccess('Email updated successfully');
       } else {
-        setSuccess(true);
+        setError(`Error updating email: ${result.error}`);
       }
     } catch (error) {
-      setError('Kesalahan tidak terduga: ' + error.message);
+      setError(`Error updating email: ${error.message}`);
     }
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-full overflow-hidden">
-      <ProfileNav />
-      <div className="flex-1 p-2">
-        <div className="w-full bg-white rounded-lg shadow-lg p-6 sm:p-8">
-          <h1 className="text-xl sm:text-2xl font-semibold mb-2 text-center md:text-left">
-            Atur Sandi
-          </h1>
-          <div className="border border-black mb-6"></div>
-          <div className="bg-blue-100 p-4 sm:p-6 rounded-lg">
-            <p className="mb-4 text-red-500 text-sm sm:text-base">
-              Kata sandi Anda harus paling tidak 6 karakter.
-            </p>
-
-            {/* Input Kata Sandi Saat Ini */}
-            <div className="mb-4">
-              <label
-                htmlFor="currentPassword"
-                className="block text-gray-700 font-bold text-sm sm:text-base"
-              >
-                Kata Sandi Saat Ini
-              </label>
-              <input
-                type="password"
-                id="currentPassword"
-                value={currentPassword}
-                onChange={(e) => setCurrentPassword(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-lg"
-              />
-            </div>
-
-            {/* Input Kata Sandi Baru */}
-            <div className="mb-4">
-              <label
-                htmlFor="newPassword"
-                className="block text-gray-700 font-bold text-sm sm:text-base"
-              >
-                Kata Sandi Baru
-              </label>
-              <input
-                type="password"
-                id="newPassword"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-lg"
-              />
-            </div>
-
-            {/* Input Konfirmasi Kata Sandi */}
-            <div className="mb-4">
-              <label
-                htmlFor="confirmPassword"
-                className="block text-gray-700 font-bold text-sm sm:text-base"
-              >
-                Konfirmasi Kata Sandi Baru
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-lg"
-              />
-            </div>
-
-            <button
-              onClick={handlePasswordReset}
-              className="w-full p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300"
-            >
-              Simpan Perubahan
-            </button>
-            {error && <p className="text-red-500 mt-4">{error}</p>}
-            {success && <p className="text-green-500 mt-4">Kata sandi berhasil diperbarui!</p>}
-          </div>
-        </div>
-      </div>
+    <div>
+      <h1>Update Email</h1>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter new email"
+      />
+      <button onClick={handleUpdateEmail}>Update Email</button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {success && <p style={{ color: 'green' }}>{success}</p>}
     </div>
   );
 };
 
-export default ResetPasswordPage;
+export default UpdateEmail;

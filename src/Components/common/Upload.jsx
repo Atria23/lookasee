@@ -167,21 +167,21 @@ const handleFileSelect = (event) => {
             Jangan ragu untuk mengunggah barang yang kamu temukan atau yang kamu cari!
           </p>
         </div>
-        <div className="max-w-md mx-auto mt-4">
+
+        <div className="max-w-full mx-auto mt-4 px-4 sm:max-w-md">
           {/* Dropzone and File Input Combined */}
           <div
-            className="border-2 bg-white border-dashed border-gray-300 mx-auto rounded-lg p-4 mb-4"
-            onDrop={handleDrop}
+           className="border-2 bg-white border-dashed border-gray-300 mx-auto rounded-lg p-4 mb-4 cursor-pointer text-center flex items-center justify-center w-full h-64 sm:h-80 md:h-96"
+           onDrop={handleDrop}
             onDragOver={(e) => e.preventDefault()}
             onClick={() => document.getElementById('fileInput').click()} // Trigger file input click
-            style={{ cursor: 'pointer', width: '400px', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >
+           >
             {previewUrl ? (
               <img src={previewUrl} alt="Preview" className="w-full h-full object-contain" />
             ) : (
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
                 <svg
-                  className="w-10 h-10 mb-4 text-gray-500 dark:text-gray-400"
+                  className="w-10 h-10 mb-4 text-gray-500"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -214,6 +214,7 @@ const handleFileSelect = (event) => {
             style={{ display: 'none' }} // Hide the actual file input
           />
         </div>
+
         <div className="mb-6">
           <label
             htmlFor="item-name"

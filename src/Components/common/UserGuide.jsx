@@ -180,7 +180,7 @@ function UserGuide() {
         >
           <CloseIcon />
         </button>
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-6">Panduan Penggunaan</h1>
+        <h1 className="text-center md:text-left text-4xl font-extrabold text-gray-800 mb-6">Panduan Penggunaan</h1>
 
         <div className="flex space-x-4 mb-8">
           <button

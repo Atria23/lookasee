@@ -108,8 +108,8 @@ export default function Register() {
   return (
     <div className="bg-bg_utama min-h-screen overflow-hidden flex items-center justify-center p-4">
       <div className="max-w-3xl w-full flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
-        <div id="default-carousel" className="relative overflow-hidden md:w-1/2" data-carousel="slide">
-          <div className="relative rounded-lg mb-24 h-96">
+        <div id="default-carousel" className="relative overflow-hidden w-full md:w-1/2" data-carousel="slide">
+          <div className="relative rounded-lg h-64 md:h-96 mb-8 md:mb-24">
             {slides.map((slide, index) => (
               <div
                 key={index}
@@ -117,11 +117,11 @@ export default function Register() {
                 style={{ transform: `translateX(${(index - activeSlide) * 100}%)` }}
                 data-carousel-item
               >
-                <img src={slide} className="block w-full" alt={`Slide ${index + 1}`} />
+                <img src={slide} className="w-full h-64 md:h-full object-contain" alt={`Slide ${index + 1}`} />
               </div>
             ))}
           </div>
-          <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+          <div className="absolute z-30 flex -translate-x-1/2 bottom-4 left-1/2 space-x-2 rtl:space-x-reverse">
             {slides.map((_, index) => (
               <button
                 key={index}
@@ -134,17 +134,17 @@ export default function Register() {
               ></button>
             ))}
           </div>
-          <button type="button" className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev onClick={handlePrevSlide}>
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <button type="button" className="absolute top-1/2 left-4 z-30 flex items-center justify-center h-10 w-10 bg-white/30 dark:bg-gray-800/30 hover:bg-white/50 dark:hover:bg-gray-800/60 focus:outline-none group" data-carousel-prev onClick={handlePrevSlide}>
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/50 dark:bg-gray-800/50 group-hover:bg-white/70 dark:group-hover:bg-gray-800/70">
+              <svg className="w-4 h-4 text-gray-900 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
               </svg>
               <span className="sr-only">Previous</span>
             </span>
           </button>
-          <button type="button" className="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next onClick={handleNextSlide}>
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <button type="button" className="absolute top-1/2 right-4 z-30 flex items-center justify-center h-10 w-10 bg-white/30 dark:bg-gray-800/30 hover:bg-white/50 dark:hover:bg-gray-800/60 focus:outline-none group" data-carousel-next onClick={handleNextSlide}>
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/50 dark:bg-gray-800/50 group-hover:bg-white/70 dark:group-hover:bg-gray-800/70">
+              <svg className="w-4 h-4 text-gray-900 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
               </svg>
               <span className="sr-only">Next</span>
@@ -246,96 +246,96 @@ export default function Register() {
               Daftar
             </button>
             <p className="text-sm text-center font-light text-gray-500">
-                                Sudah memiliki akun?{" "}
-                                <a
-                                    onClick={() => navigate("/login")}
-                                    className="font-medium cursor-pointer text-primary-600 text-utama hover:underline"
-                                >
-                                    Login
-                                </a>
-                            </p>
+              Sudah memiliki akun?{" "}
+              <a
+                onClick={() => navigate("/login")}
+                className="font-medium cursor-pointer text-primary-600 text-utama hover:underline"
+              >
+                Login
+              </a>
+            </p>
           </form>
         </div>
       </div>
 
       {isModalOpen && (
-              <div
-                id="static-modal"
-                tabIndex="-1"
-                aria-hidden="true"
-                className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50"
-              >
-                <div className="relative p-4 w-full max-w-2xl max-h-full">
-                  <div className="relative bg-white rounded-lg shadow">
-                    <div className="flex items-center justify-between p-4 border-b rounded-t">
-                      <h3 className="text-xl font-semibold text-gray-900">
-                        Terms & Conditions
-                      </h3>
-                      <button
-                        type="button"
-                        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                        onClick={handleToggleModal}
-                      >
-                        <svg
-                          className="w-3 h-3"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 14 14"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                          />
-                        </svg>
-                        <span className="sr-only">Close modal</span>
-                      </button>
-                    </div>
-                    <div className="p-4 overflow-y-auto max-h-80">
-                    <h1 className="block text-gray-700 font-bold"> Privasi Terjamin</h1>
-                    <p className="mb-4 ">Kami menjaga privasi Anda dengan serius. Data pribadi Anda aman bersama kami, dan kami tidak akan membagikannya dengan pihak ketiga tanpa izin Anda.</p>
-                    
-                    <h1 className="block text-gray-700 font-bold"> Keamanan Data</h1>
-                    <p className="mb-4 ">Aplikasi kami dilengkapi dengan enkripsi tingkat tinggi untuk melindungi data Anda dari akses yang tidak sah. Setiap informasi yang Anda masukkan terlindungi dengan baik.</p>
-                    
-                    <h1 className="block text-gray-700 font-bold"> Perlindungan Privasi</h1>
-                    <p className="mb-4 ">Nikmati pencarian barang tanpa khawatir. Privasi Anda adalah prioritas kami, dan kami selalu berusaha memastikan bahwa informasi Anda tetap aman dan rahasia.</p>
-                    
-                    <h1 className="block text-gray-700 font-bold"> Keamanan Terbaik</h1>
-                    <p className="mb-4 ">Dengan teknologi keamanan terkini, kami memastikan data Anda selalu terlindungi. Protokol keamanan berlapis kami dirancang untuk menjaga integritas dan kerahasiaan data Anda.</p>
-                    
-                    <h1 className="block text-gray-700 font-bold"> Privasi</h1>
-                    <p className="mb-4 ">Informasi pribadi Anda hanya digunakan untuk keperluan pencarian dan tidak dibagikan kepada pihak ketiga. Kami berkomitmen untuk menjaga kerahasiaan data Anda.</p>
-                    
-                    <h1 className="block text-gray-700 font-bold"> Pengamanan Data</h1>
-                    <p className="mb-4 ">Kami menggunakan sistem pengamanan data berlapis untuk memastikan tidak ada celah keamanan. Setiap lapisan keamanan dirancang untuk melindungi informasi Anda dari ancaman potensial.</p>
-                    
-                    <h1 className="block text-gray-700 font-bold"> Privasi dan Keamanan Maksimal</h1>
-                    <p className="mb-4 ">Setiap pencarian yang Anda lakukan dilindungi dengan protokol keamanan terbaik. Kami memastikan bahwa aktivitas Anda dalam aplikasi kami selalu aman.</p>
-                    
-                    <h1 className="block text-gray-700 font-bold"> Aman dan Terpercaya</h1>
-                    <p className="mb-4 ">Keamanan informasi pribadi Anda adalah tanggung jawab utama kami. Kami berusaha keras untuk memastikan bahwa data Anda tidak akan jatuh ke tangan yang salah.</p>
-                    
-                    <h1 className="block text-gray-700 font-bold"> Privasi Anda, Prioritas Kami</h1>
-                    <p className="mb-4 ">Kami berkomitmen untuk melindungi privasi dan keamanan data Anda dalam setiap langkah pencarian. Dengan kebijakan privasi yang ketat, kami memastikan bahwa data Anda hanya digunakan untuk keperluan yang telah Anda setujui.</p>
-                    </div>
-                    <div className="flex items-center p-4 border-t border-gray-200 rounded-b">
-                      <button
-                        type="button"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                        onClick={handleAcceptTerms}
-                      >
-                        I accept
-                      </button>
-                    </div>
-                    
-                  </div>
-                </div>
+        <div
+          id="static-modal"
+          tabIndex="-1"
+          aria-hidden="true"
+          className="fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50"
+        >
+          <div className="relative p-4 w-full max-w-2xl max-h-full">
+            <div className="relative bg-white rounded-lg shadow">
+              <div className="flex items-center justify-between p-4 border-b rounded-t">
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Terms & Conditions
+                </h3>
+                <button
+                  type="button"
+                  className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                  onClick={handleToggleModal}
+                >
+                  <svg
+                    className="w-3 h-3"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 14"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                    />
+                  </svg>
+                  <span className="sr-only">Close modal</span>
+                </button>
               </div>
-            )}
+              <div className="p-4 overflow-y-auto max-h-80">
+                <h1 className="block text-gray-700 font-bold"> Privasi Terjamin</h1>
+                <p className="mb-4 ">Kami menjaga privasi Anda dengan serius. Data pribadi Anda aman bersama kami, dan kami tidak akan membagikannya dengan pihak ketiga tanpa izin Anda.</p>
+
+                <h1 className="block text-gray-700 font-bold"> Keamanan Data</h1>
+                <p className="mb-4 ">Aplikasi kami dilengkapi dengan enkripsi tingkat tinggi untuk melindungi data Anda dari akses yang tidak sah. Setiap informasi yang Anda masukkan terlindungi dengan baik.</p>
+
+                <h1 className="block text-gray-700 font-bold"> Perlindungan Privasi</h1>
+                <p className="mb-4 ">Nikmati pencarian barang tanpa khawatir. Privasi Anda adalah prioritas kami, dan kami selalu berusaha memastikan bahwa informasi Anda tetap aman dan rahasia.</p>
+
+                <h1 className="block text-gray-700 font-bold"> Keamanan Terbaik</h1>
+                <p className="mb-4 ">Dengan teknologi keamanan terkini, kami memastikan data Anda selalu terlindungi. Protokol keamanan berlapis kami dirancang untuk menjaga integritas dan kerahasiaan data Anda.</p>
+
+                <h1 className="block text-gray-700 font-bold"> Privasi</h1>
+                <p className="mb-4 ">Informasi pribadi Anda hanya digunakan untuk keperluan pencarian dan tidak dibagikan kepada pihak ketiga. Kami berkomitmen untuk menjaga kerahasiaan data Anda.</p>
+
+                <h1 className="block text-gray-700 font-bold"> Pengamanan Data</h1>
+                <p className="mb-4 ">Kami menggunakan sistem pengamanan data berlapis untuk memastikan tidak ada celah keamanan. Setiap lapisan keamanan dirancang untuk melindungi informasi Anda dari ancaman potensial.</p>
+
+                <h1 className="block text-gray-700 font-bold"> Privasi dan Keamanan Maksimal</h1>
+                <p className="mb-4 ">Setiap pencarian yang Anda lakukan dilindungi dengan protokol keamanan terbaik. Kami memastikan bahwa aktivitas Anda dalam aplikasi kami selalu aman.</p>
+
+                <h1 className="block text-gray-700 font-bold"> Aman dan Terpercaya</h1>
+                <p className="mb-4 ">Keamanan informasi pribadi Anda adalah tanggung jawab utama kami. Kami berusaha keras untuk memastikan bahwa data Anda tidak akan jatuh ke tangan yang salah.</p>
+
+                <h1 className="block text-gray-700 font-bold"> Privasi Anda, Prioritas Kami</h1>
+                <p className="mb-4 ">Kami berkomitmen untuk melindungi privasi dan keamanan data Anda dalam setiap langkah pencarian. Dengan kebijakan privasi yang ketat, kami memastikan bahwa data Anda hanya digunakan untuk keperluan yang telah Anda setujui.</p>
+              </div>
+              <div className="flex items-center p-4 border-t border-gray-200 rounded-b">
+                <button
+                  type="button"
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  onClick={handleAcceptTerms}
+                >
+                  I accept
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

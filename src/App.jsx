@@ -12,7 +12,6 @@ import Message from './Pages/Message';
 import Meet from './Pages/Meet';
 import ChangePassword from './Pages/ChangePassword';
 import DetailBarang from './Pages/DetailBarang';
-import DeleteItem from './Pages/DeleteItem';
 import Condition from './Pages/Condition';
 import ResetPasswordRequest from './Pages/ResetPasswordRequest';
 import ResetPassword from './Pages/ResetPassword';
@@ -50,7 +49,6 @@ function App() {
           <Route path="/otherprofile/:userId" element={<OtherProfile />} />
           <Route path="/riwayat" element={<Riwayat />} />
           <Route path="/upload" element={<Upload />} />
-          <Route path="/delete" element={<DeleteItem />} />
           <Route path="/message" element={<Message />} />
           <Route path="/meet" element={<Meet />} />
           <Route path="/changepassword" element={<ChangePassword />} />

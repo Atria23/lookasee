@@ -34,6 +34,17 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.break-word': {
+          'overflow-wrap': 'break-word',
+          'word-break': 'break-word',
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
   }
   

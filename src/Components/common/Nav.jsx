@@ -51,7 +51,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="w-full bg-utama z-50">
+      <nav className="fixed w-full bg-utama z-50">
         <div className="flex mx-0 sm:mx-20 justify-between items-center p-4">
           <a onClick={() => navigate("/")} className="text-2xl font-bold cursor-pointer">lookasee</a>
 
@@ -98,7 +98,7 @@ export default function Nav() {
           </div>
 
           {/* Mobile Menu */}
-          <button onClick={handleDrawerToggle} className="md:hidden p-4 text-white rounded-lg">
+          <button onClick={handleDrawerToggle} className="md:hidden text-white rounded-lg">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -146,6 +146,7 @@ export default function Nav() {
           )}
         </div>
       </nav>
+      <div className='pb-16'></div>
     </>
   );
 }

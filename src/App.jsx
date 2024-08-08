@@ -16,12 +16,8 @@ import ResetPasswordRequest from './Pages/ResetPasswordRequest';
 import ResetPassword from './Pages/ResetPassword';
 import UserGuide from './Pages/UserGuide';
 import AboutUs from './Pages/AboutUs';
-
-
-
 import { AuthProvider } from './Components/common/AuthProvider';
 import { useState, useEffect } from 'react';
-import Coba from './Pages/coba';
 
 function App() {
   const [token, setToken] = useState(false)
@@ -39,7 +35,6 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/coba" element={<Coba />} />
           <Route path="/" element={<HomePage token={token} />} />
           <Route path="/search" element={<HasilPencarian />} />
           <Route path="/login" element={<Login setToken={setToken}/>} />

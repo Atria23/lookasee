@@ -100,17 +100,17 @@ function ResetPasswordRequest() {
               ></button>
             ))}
           </div>
-          <button type="button" className="absolute top-1/2 left-4 z-30 flex items-center justify-center h-10 w-10 bg-white/30 dark:bg-gray-800/30 hover:bg-white/50 dark:hover:bg-gray-800/60 focus:outline-none group" data-carousel-prev onClick={handlePrevSlide}>
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/50 dark:bg-gray-800/50 group-hover:bg-white/70 dark:group-hover:bg-gray-800/70">
-              <svg className="w-4 h-4 text-gray-900 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <button type="button" className="absolute top-1/2 left-4 z-30 flex items-center justify-center h-10 w-10 bg-white/30 hover:bg-white/50 focus:outline-none group" data-carousel-prev onClick={handlePrevSlide}>
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/50 group-hover:bg-white/70">
+              <svg className="w-4 h-4 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
               </svg>
               <span className="sr-only">Previous</span>
             </span>
           </button>
-          <button type="button" className="absolute top-1/2 right-4 z-30 flex items-center justify-center h-10 w-10 bg-white/30 dark:bg-gray-800/30 hover:bg-white/50 dark:hover:bg-gray-800/60 focus:outline-none group" data-carousel-next onClick={handleNextSlide}>
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/50 dark:bg-gray-800/50 group-hover:bg-white/70 dark:group-hover:bg-gray-800/70">
-              <svg className="w-4 h-4 text-gray-900 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <button type="button" className="absolute top-1/2 right-4 z-30 flex items-center justify-center h-10 w-10 bg-white/30 hover:bg-white/50 focus:outline-none group" data-carousel-next onClick={handleNextSlide}>
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/50 group-hover:bg-white/70">
+              <svg className="w-4 h-4 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
               </svg>
               <span className="sr-only">Next</span>

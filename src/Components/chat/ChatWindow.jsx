@@ -115,7 +115,7 @@ const ChatWindow = ({ chat, selectedChat, onSendMessage }) => {
   }, []);
 
   return (
-    <div className="w-2/3 flex flex-col bg-bg_utama justify-between p-4 h-full">
+    <div className="flex flex-col bg-bg_utama justify-between p-4 h-full">
       {selectedChat && user ? (
         <div className="flex items-center py-2 px-2 mb-4 bg-slate-100">
           <img

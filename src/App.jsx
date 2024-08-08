@@ -9,7 +9,6 @@ import OtherProfile from './Pages/OtherProfile';
 import Riwayat from './Pages/Riwayat';
 import Upload from './Pages/Upload';
 import Message from './Pages/Message';
-import Meet from './Pages/Meet';
 import ChangePassword from './Pages/ChangePassword';
 import DetailBarang from './Pages/DetailBarang';
 import Condition from './Pages/Condition';
@@ -50,7 +49,6 @@ function App() {
           <Route path="/riwayat" element={<Riwayat />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/message" element={<Message />} />
-          <Route path="/meet" element={<Meet />} />
           <Route path="/changepassword" element={<ChangePassword />} />
           <Route path="/condition" element={<Condition />} />
           <Route path="/resetpasswordrequest" element={<ResetPasswordRequest/>} />

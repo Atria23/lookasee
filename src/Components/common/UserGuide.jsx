@@ -172,48 +172,53 @@ function UserGuide() {
   ];
 
   return (
-    <div className="bg-bg_utama py-12 px-4 md:px-8 lg:px-16">
-      <div className="max-w-5xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-lg relative">
-        <button
-          onClick={() => navigate(-1)}
-          className="absolute top-6 right-6 bg-transparent text-gray-600 hover:text-gray-800 transition duration-300"
-        >
-          <CloseIcon />
-        </button>
-        <h1 className="text-center md:text-left text-4xl font-extrabold text-gray-800 mb-6">Panduan Penggunaan</h1>
+    <div className="bg-bg_utama py-8 px-2 sm:px-4 md:px-8 lg:px-16">
+  <div className="max-w-full md:max-w-5xl mx-auto bg-white p-4 sm:p-6 md:p-8 lg:p-12 rounded-lg shadow-lg relative">
+    <button
+      onClick={() => navigate(-1)}
+      className="absolute top-4 sm:top-6 right-4 sm:right-6 bg-transparent text-gray-600 hover:text-gray-800 transition duration-300"
+    >
+      <CloseIcon className="w-6 h-6 sm:w-8 sm:h-8" />
+    </button>
+    <h1 className="text-center md:text-left text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-800 mb-4 sm:mb-6">
+      Panduan Penggunaan
+    </h1>
 
-        <div className="flex space-x-4 mb-8">
-          <button
-            onClick={() => setSelectedGuide('upload')}
-            className={`py-2 px-4 rounded-lg text-white font-semibold ${
-              selectedGuide === 'upload' ? 'bg-blue-600' : 'bg-gray-400'
-            }`}
-          >
-            Cara Mengunggah Barang
-          </button>
-          <button
-            onClick={() => setSelectedGuide('confirm')}
-            className={`py-2 px-4 rounded-lg text-white font-semibold ${
-              selectedGuide === 'confirm' ? 'bg-blue-600' : 'bg-gray-400'
-            }`}
-          >
-            Cara Konfirmasi Barang Sudah Kembali
-          </button>
-          <button
-            onClick={() => setSelectedGuide('chat')}
-            className={`py-2 px-4 rounded-lg text-white font-semibold ${
-              selectedGuide === 'chat' ? 'bg-blue-600' : 'bg-gray-400'
-            }`}
-          >
-            Cara Menghubungi Pengunggah Barang
-          </button>
-        </div>
-
-        {selectedGuide === 'upload' && <GuideContent steps={uploadSteps} />}
-        {selectedGuide === 'confirm' && <GuideContent steps={confirmSteps} />}
-        {selectedGuide === 'chat' && <GuideContent steps={chatSteps} />}
-      </div>
+    <div className="flex flex-wrap space-y-2 sm:space-y-0 sm:space-x-4 mb-6 sm:mb-8 justify-center md:justify-start">
+      <button
+        onClick={() => setSelectedGuide('upload')}
+        className={`w-full sm:w-auto py-2 px-4 rounded-lg text-white font-semibold ${
+          selectedGuide === 'upload' ? 'bg-blue-600' : 'bg-gray-400'
+        }`}
+      >
+        Cara Mengunggah Barang
+      </button>
+      <button
+        onClick={() => setSelectedGuide('confirm')}
+        className={`w-full sm:w-auto py-2 px-4 rounded-lg text-white font-semibold ${
+          selectedGuide === 'confirm' ? 'bg-blue-600' : 'bg-gray-400'
+        }`}
+      >
+        Cara Konfirmasi Barang Sudah Kembali
+      </button>
+      <button
+        onClick={() => setSelectedGuide('chat')}
+        className={`w-full sm:w-auto py-2 px-4 rounded-lg text-white font-semibold ${
+          selectedGuide === 'chat' ? 'bg-blue-600' : 'bg-gray-400'
+        }`}
+      >
+        Cara Menghubungi Pengunggah Barang
+      </button>
     </div>
+
+    <div className="px-2">
+      {selectedGuide === 'upload' && <GuideContent steps={uploadSteps} />}
+      {selectedGuide === 'confirm' && <GuideContent steps={confirmSteps} />}
+      {selectedGuide === 'chat' && <GuideContent steps={chatSteps} />}
+    </div>
+  </div>
+</div>
+
   );
 }
 

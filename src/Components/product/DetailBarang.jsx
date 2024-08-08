@@ -448,25 +448,25 @@ const DetailBarang = () => {
   return (
     <>
       <div className='flex items-center justify-between pt-6 px-8'>
-      <button
-        onClick={handleBackClick}
-        className="flex items-center justify-center text-white bg-utama hover:bg-blue-400 font-medium rounded-lg text-sm px-3 py-2.5 sm:px-5 sm:py-2.5"
-      >
-        <svg class="w-4 h-4 sm:w-6 sm:h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/>
-</svg>
+        <button
+          onClick={handleBackClick}
+          className="flex items-center justify-center text-white bg-utama hover:bg-blue-400 font-medium rounded-lg text-sm px-3 py-2.5 sm:px-5 sm:py-2.5"
+        >
+          <svg class="w-4 h-4 sm:w-6 sm:h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7" />
+          </svg>
 
-      </button>
+        </button>
 
-      <button
-        onClick={handleCopyLink}
-        className="flex items-center justify-center text-white bg-utama hover:bg-blue-400 font-medium rounded-lg text-sm px-3 py-2.5 sm:px-5 sm:py-2.5"
-      >
-        <svg class="w-4 h-4 sm:w-6 sm:h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-  <path d="M17.5 3a3.5 3.5 0 0 0-3.456 4.06L8.143 9.704a3.5 3.5 0 1 0-.01 4.6l5.91 2.65a3.5 3.5 0 1 0 .863-1.805l-5.94-2.662a3.53 3.53 0 0 0 .002-.961l5.948-2.667A3.5 3.5 0 1 0 17.5 3Z"/>
-</svg>
+        <button
+          onClick={handleCopyLink}
+          className="flex items-center justify-center text-white bg-utama hover:bg-blue-400 font-medium rounded-lg text-sm px-3 py-2.5 sm:px-5 sm:py-2.5"
+        >
+          <svg class="w-4 h-4 sm:w-6 sm:h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.5 3a3.5 3.5 0 0 0-3.456 4.06L8.143 9.704a3.5 3.5 0 1 0-.01 4.6l5.91 2.65a3.5 3.5 0 1 0 .863-1.805l-5.94-2.662a3.53 3.53 0 0 0 .002-.961l5.948-2.667A3.5 3.5 0 1 0 17.5 3Z" />
+          </svg>
 
-      </button>
+        </button>
       </div>
 
       {copySuccess && (
@@ -493,7 +493,7 @@ const DetailBarang = () => {
 
         <div className="flex-1 p-2">
           <div className="w-full bg-white rounded-lg shadow-lg p-4">
-            <div className="w-full overflow-auto sm:h-[500px] scrollable-content">
+            <div className="w-full overflow-auto sm:h-[480px] scrollable-content">
               <div className="list-none text-gray-600 flex flex-col">
                 <h2 className="text-4xl mb-2 font-bold font-poppins text-utama text-center drop-shadow-lg overflow-hidden break-word">
                   {product.item_name}
@@ -530,7 +530,7 @@ const DetailBarang = () => {
                   </svg>
                   <p className="text-xl font-bold">{product.users?.name || 'Unknown'}</p>
                 </div>
-                <div className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg py-3 px-2 overflow-hidden break-words">
+                <div className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg py-3 px-2 overflow-hidden break-word">
                   <span className="font-semibold">Deskripsi:</span>
                   <p className="">{displayedDescription}</p>
                   {isDescriptionLong && (

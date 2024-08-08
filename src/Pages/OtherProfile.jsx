@@ -7,10 +7,9 @@ export default function OtherProfilePages() {
     const { user } = useAuth();
 
     return (
-        <>
+        <div className="overflow-hidden h-screen">
             {user ? <NavUser /> : <Nav />}
-
             <OtherProfile />
-        </>
+        </div>
     );
 }

@@ -195,11 +195,11 @@ const handleFileSelect = (event) => {
                     d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                   />
                 </svg>
-                <p className="mb-2 text-base text-gray-500 dark:text-gray-400 mx-6">
+                <p className="mb-2 text-base text-gray-500 mx-6">
                   <span className="font-semibold">Click to upload</span> or drag
                   and drop
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-sm text-gray-500">
                   Any image file (PNG, JPG)
                 </p>
               </div>
@@ -218,7 +218,7 @@ const handleFileSelect = (event) => {
         <div className="mb-6">
           <label
             htmlFor="item-name"
-            className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-base font-medium text-gray-900"
           >
             Nama Barang
           </label>
@@ -226,7 +226,7 @@ const handleFileSelect = (event) => {
             id="item-name"
             maxLength={50}
             rows="5"
-            className="block p-3 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block p-3 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
             placeholder="Masukkan Nama Barang"
             value={itemName}
             onChange={(e) => setItemName(e.target.value)}
@@ -236,7 +236,7 @@ const handleFileSelect = (event) => {
           <div>
             <label
               htmlFor="category"
-              className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-base font-medium text-gray-900"
             >
               Kategori
             </label>
@@ -244,7 +244,7 @@ const handleFileSelect = (event) => {
               <select
                 type="text"
                 id="category"
-                className="appearance-none bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="appearance-none bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
                 placeholder="Pilih Kategori"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
@@ -281,14 +281,14 @@ const handleFileSelect = (event) => {
           <div>
             <label
               htmlFor="status"
-              className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-base font-medium text-gray-900"
             >
               Status
             </label>
             <div className="relative">
               <select
                 id="status"
-                className="appearance-none bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="appearance-none bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
                 required
@@ -315,17 +315,17 @@ const handleFileSelect = (event) => {
           <div>
             <label
               htmlFor="region"
-              className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-base font-medium text-gray-900"
             >
               Daerah
             </label>
             <div className="relative">
               <button
                 id="region"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-left"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3      text-left"
                 onClick={toggleRegionPopUp}
               >
-                {region || "Pilih Daerah"}
+                {region ||"Pilih Daerah"}
               </button>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -371,7 +371,7 @@ const handleFileSelect = (event) => {
           <div>
             <label
               htmlFor="address"
-              className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-base font-medium text-gray-900"
             >
               Alamat
             </label>
@@ -379,7 +379,7 @@ const handleFileSelect = (event) => {
               type="text"
               maxLength={400}
               id="address"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
               placeholder="Masukkan Alamat"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
@@ -388,14 +388,14 @@ const handleFileSelect = (event) => {
           <div>
             <label
               htmlFor="time"
-              className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-base font-medium text-gray-900"
             >
               Waktu Kejadian
             </label>
             <input
               type="datetime-local"
               id="time"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
               value={time}
               onChange={(e) => setTime(e.target.value)}
             />
@@ -403,14 +403,14 @@ const handleFileSelect = (event) => {
           <div>
             <label
               htmlFor="phone"
-              className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-base font-medium text-gray-900"
             >
               No. Telepon
             </label>
             <input
               type="text"
               id="phone"
-              className={`bg-gray-50 border ${phoneNumberValid ? 'border-gray-300' : 'border-red-500'} text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+              className={`bg-gray-50 border ${phoneNumberValid ? 'border-gray-300' : 'border-red-500'} text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3      `}
               placeholder="Masukkan No. Telepon"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -423,7 +423,7 @@ const handleFileSelect = (event) => {
         <div className="mt-6 mb-6">
           <label
             htmlFor="description"
-            className="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-base font-medium text-gray-900"
           >
             Deskripsi
           </label>
@@ -431,7 +431,7 @@ const handleFileSelect = (event) => {
             id="description"
             maxLength={3000}
             rows="5"
-            className="block p-3 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block p-3 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
             placeholder="Masukkan Deskripsi"
             value={description}
             onChange={(e) => setDescription(e.target.value)}

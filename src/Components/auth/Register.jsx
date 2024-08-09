@@ -56,6 +56,8 @@ export default function Register() {
         password,
       });
 
+
+
       if (authError) {
         setError(authError.message);
       } else {
@@ -72,6 +74,8 @@ export default function Register() {
           navigate("/"); // Navigate to homepage if successful
         }
       }
+    } else if (password !== repeatPassword) {
+      setError("Konfirmasi kata sandi tidak sesuai");
     } else {
       setError("Isi semua kolom dengan benar dan setujui S&K.");
     }
@@ -179,6 +183,7 @@ export default function Register() {
                 id="email"
                 required
                 placeholder="Masukkan Alamat Email Anda"
+                pattern="^[^@]+@[^@]+\.[^@]+$"
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </div>

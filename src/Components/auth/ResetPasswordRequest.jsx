@@ -16,7 +16,7 @@ function ResetPasswordRequest() {
   const handlePasswordReset = async () => {
     try {
       const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: 'http://h939xknh-5173.asse.devtunnels.ms/resetpassword', // Ganti dengan URL aplikasi Anda
+        redirectTo: 'https://lookasee.vercel.com/resetpassword', // Ganti dengan URL aplikasi Anda
       });
 
       if (error) {

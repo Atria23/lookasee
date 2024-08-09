@@ -251,7 +251,7 @@ export default function Register() {
                 onClick={() => navigate("/login")}
                 className="font-medium cursor-pointer text-primary-600 text-utama hover:underline"
               >
-                Login
+                Masuk
               </a>
             </p>
           </form>
@@ -269,7 +269,7 @@ export default function Register() {
             <div className="relative bg-white rounded-lg shadow">
               <div className="flex items-center justify-between p-4 border-b rounded-t">
                 <h3 className="text-xl font-semibold text-gray-900">
-                  Terms & Conditions
+                  Syarat & Ketentuan
                 </h3>
                 <button
                   type="button"
@@ -328,7 +328,7 @@ export default function Register() {
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   onClick={handleAcceptTerms}
                 >
-                  I accept
+                  Setuju
                 </button>
               </div>
 

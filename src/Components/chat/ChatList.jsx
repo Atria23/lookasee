@@ -72,7 +72,7 @@ export const ChatList = ({ messages, contacts, setSelectedChat }) => {
       ) : (
         <div className="p-2 text-gray-600 cursor-pointer">Tidak ada kontak yang ditemukan <br /> Silahkan mulai percakapan
           <p className="mb-4 text-utama">
-            <a onClick={() => navigate("/userguide")} className="hover:underline">Cara Penggunaan</a>
+            <a onClick={() => navigate("/userguide")} className="hover:underline">Cara Menggunakan Fitur Chat</a>
           </p></div>
 
       )}

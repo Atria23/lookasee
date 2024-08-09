@@ -60,7 +60,7 @@ function CloseIcon() {
 }
 
 function UserGuide() {
-  const [selectedGuide, setSelectedGuide] = useState('upload');
+  const [selectedGuide, setSelectedGuide] = useState('chat');
   const navigate = useNavigate();
 
   const uploadSteps = [
@@ -207,7 +207,7 @@ function UserGuide() {
           selectedGuide === 'chat' ? 'bg-blue-600' : 'bg-gray-400'
         }`}
       >
-        Cara Menghubungi Pengunggah Barang
+        Cara Menggunakan Fitur Chat
       </button>
     </div>
 

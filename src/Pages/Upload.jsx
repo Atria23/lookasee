@@ -1,6 +1,5 @@
 import Nav from "../Components/common/Nav";
 import NavUser from "../Components/common/NavUser";
-
 import Upload from "../Components/common/Upload";
 import { useAuth } from "../Components/common/AuthProvider";
 

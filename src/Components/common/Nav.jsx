@@ -130,6 +130,15 @@ export default function Nav() {
                       <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/search'>Pencarian</NavLink>
                     </li>
                     <li>
+                      <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/upload'>Unggah</NavLink>
+                    </li>
+                    <li>
+                      <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/riwayat'>Riwayat</NavLink>
+                    </li>
+                    <li>
+                      <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/message'>Pesan</NavLink>
+                    </li>
+                    <li>
                       <button onClick={() => navigate("/login")} className="flex items-center py-12 px-4 text-gray-300 hover:text-white">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

@@ -16,6 +16,7 @@ import ResetPasswordRequest from './Pages/ResetPasswordRequest';
 import ResetPassword from './Pages/ResetPassword';
 import UserGuide from './Pages/UserGuide';
 import AboutUs from './Pages/AboutUs';
+import ProtectedRoute from './Pages/ProtectedRoute';
 import { AuthProvider } from './Components/common/AuthProvider';
 import { useState, useEffect } from 'react';
 
@@ -37,21 +38,21 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage token={token} />} />
           <Route path="/search" element={<HasilPencarian />} />
-          <Route path="/login" element={<Login setToken={setToken}/>} />
+          <Route path="/login" element={<Login setToken={setToken} />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/otherprofile/:userId" element={<OtherProfile />} />
-          <Route path="/riwayat" element={<Riwayat />} />
-          <Route path="/upload" element={<Upload />} />
-          <Route path="/message" element={<Message />} />
+          <Route path="/otherprofile/:userId" element={<ProtectedRoute><OtherProfile /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/riwayat" element={<ProtectedRoute><Riwayat /></ProtectedRoute>} />
+          <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
+          <Route path="/message" element={<ProtectedRoute><Message /></ProtectedRoute>} />
           <Route path="/changepassword" element={<ChangePassword />} />
           <Route path="/condition" element={<Condition />} />
-          <Route path="/resetpasswordrequest" element={<ResetPasswordRequest/>} />
+          <Route path="/resetpasswordrequest" element={<ResetPasswordRequest />} />
           <Route path="/detailbarang/:id" element={<DetailBarang />} />   
-          <Route path="/resetpassword" element={<ResetPassword/>} />
-          <Route path="/resetpassword" element={<fetch/>} />
-          <Route path="/userguide" element={<UserGuide/>} />
-          <Route path="/aboutus" element={<AboutUs/>} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/resetpassword" element={<fetch />} />
+          <Route path="/userguide" element={<UserGuide />} />
+          <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

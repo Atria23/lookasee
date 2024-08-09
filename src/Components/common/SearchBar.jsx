@@ -2,73 +2,73 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function SearchBar({
-  initialSearchTerm = '',
-  initialCategory = '',
-  initialTime = '',
-  initialLocation = '',
-  initialStatus = ''
+    initialSearchTerm = '',
+    initialCategory = '',
+    initialTime = '',
+    initialLocation = '',
+    initialStatus = ''
 }) {
-  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
-  const [category, setCategory] = useState(initialCategory);
-  const [time, setTime] = useState(initialTime);
-  const [location, setLocation] = useState(initialLocation);
-  const [status, setStatus] = useState(initialStatus);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [isLocationPopUpOpen, setIsLocationPopUpOpen] = useState(false);
-  const [locationSearchTerm, setLocationSearchTerm] = useState('');
-  const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
+    const [category, setCategory] = useState(initialCategory);
+    const [time, setTime] = useState(initialTime);
+    const [location, setLocation] = useState(initialLocation);
+    const [status, setStatus] = useState(initialStatus);
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [isLocationPopUpOpen, setIsLocationPopUpOpen] = useState(false);
+    const [locationSearchTerm, setLocationSearchTerm] = useState('');
+    const navigate = useNavigate();
 
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value.toLowerCase());
-};
+    const handleSearch = (event) => {
+        setSearchTerm(event.target.value.toLowerCase());
+    };
 
-const handleSubmit = (event) => {
-    event.preventDefault();
-    navigate('/search', {
-      state: {
-        searchTerm,
-        category,
-        time,
-        location,
-        status,
-      },
-    });
-  };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        navigate('/search', {
+            state: {
+                searchTerm,
+                category,
+                time,
+                location,
+                status,
+            },
+        });
+    };
 
-  const toggleFilter = () => {
-    setIsFilterOpen(!isFilterOpen);
-};
+    const toggleFilter = () => {
+        setIsFilterOpen(!isFilterOpen);
+    };
 
-const toggleLocationPopUp = () => {
-    setIsLocationPopUpOpen(!isLocationPopUpOpen);
-};
+    const toggleLocationPopUp = () => {
+        setIsLocationPopUpOpen(!isLocationPopUpOpen);
+    };
 
-const handleLocationSearch = (event) => {
-    setLocationSearchTerm(event.target.value.toLowerCase());
-};
+    const handleLocationSearch = (event) => {
+        setLocationSearchTerm(event.target.value.toLowerCase());
+    };
 
-const locations = [
-    'Kota Semarang',
-    'Kota Salatiga',
-    'Kota Jepara',
-    'Kota Kudus',
-    'Kota Pekalongan',
-    'Kabupaten Demak',
-    'Kabupaten Grobogan',
-    'Kabupaten Pemalang',
-    'Kabupaten Boyolali',
-    'Kabupaten Rembang',
-    'Kabupaten Semarang',
-    // Add more locations as needed
-];
+    const locations = [
+        'Kota Semarang',
+        'Kota Salatiga',
+        'Kota Jepara',
+        'Kota Kudus',
+        'Kota Pekalongan',
+        'Kabupaten Demak',
+        'Kabupaten Grobogan',
+        'Kabupaten Pemalang',
+        'Kabupaten Boyolali',
+        'Kabupaten Rembang',
+        'Kabupaten Semarang',
+        // Add more locations as needed
+    ];
 
-const filteredLocations = locations.filter(location =>
-    location.toLowerCase().includes(locationSearchTerm)
-);
+    const filteredLocations = locations.filter(location =>
+        location.toLowerCase().includes(locationSearchTerm)
+    );
 
-  return (
-    <div className="py-6 px-4">
-      <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
+    return (
+        <div className="py-6 px-4">
+            <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
                 <div className="flex">
                     <button onClick={toggleFilter} type="button" data-dropdown-toggle="dropdown" className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-blue-700 hover:bg-blue-800 rounded-s-lg focus:ring-4 focus:outline-none focus:ring-gray-100">Filter
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 22 20" id="filter" className="ml-2"><g fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round"><g stroke="#fff" strokeWidth="2" transform="translate(-1614 -1629)"><g transform="translate(1615 1630)"><path d="M20 0H0l8 9.46V16l4 2V9.46z"></path></g></g></g></svg>
@@ -87,11 +87,11 @@ const filteredLocations = locations.filter(location =>
 
             {isFilterOpen && (
                 <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
-                    <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
-                        <div className="bg-white p-6">
-                            <h3 className="text-lg leading-6 font-medium text-gray-900">Filter Options</h3>
+                    <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg w-full mx-4">
+                        <div className="bg-white p-4 sm:p-6">
+                            <h3 className="text-lg leading-6 font-medium text-gray-900">Filter Pencarian</h3>
                             <div className="mt-4">
-                                <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900">Category</label>
+                                <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900">Kategori</label>
                                 <div className="relative">
                                     <select
                                         id="category"
@@ -99,19 +99,18 @@ const filteredLocations = locations.filter(location =>
                                         value={category}
                                         onChange={(e) => setCategory(e.target.value)}
                                     >
-                                      <option value="">Pilih Kategori</option>
-                                      <option value="Elektronik">Elektronik</option>
-                                      <option value="Pakaian">Pakaian</option>
-                                      <option value="Aksesoris">Aksesoris</option>
-                                      <option value="Dokumen">Dokumen</option>
-                                      <option value="Kunci">Kunci</option>
-                                      <option value="Barang Pribadi">Barang Pribadi</option>
-                                      <option value="Perlengkapan">Perlengkapan</option>
-                                      <option value="Mainan">Mainan</option>
-                                      <option value="Kendaraan">Kendaraan</option>
-                                      <option value="Perkakas">Perkakas</option>
-                                      <option value="Barang Antik">Barang Antik</option>
-
+                                        <option value="">Pilih Kategori</option>
+                                        <option value="Elektronik">Elektronik</option>
+                                        <option value="Pakaian">Pakaian</option>
+                                        <option value="Aksesoris">Aksesoris</option>
+                                        <option value="Dokumen">Dokumen</option>
+                                        <option value="Kunci">Kunci</option>
+                                        <option value="Barang Pribadi">Barang Pribadi</option>
+                                        <option value="Perlengkapan">Perlengkapan</option>
+                                        <option value="Mainan">Mainan</option>
+                                        <option value="Kendaraan">Kendaraan</option>
+                                        <option value="Perkakas">Perkakas</option>
+                                        <option value="Barang Antik">Barang Antik</option>
                                     </select>
                                     <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -119,7 +118,7 @@ const filteredLocations = locations.filter(location =>
                                 </div>
                             </div>
                             <div className="mt-4">
-                                <label htmlFor="upload-date" className="block mb-2 text-sm font-medium text-gray-900">Upload Date</label>
+                                <label htmlFor="upload-date" className="block mb-2 text-sm font-medium text-gray-900">Tanggal Kejadian</label>
                                 <input
                                     type="date"
                                     id="upload-date"
@@ -129,14 +128,14 @@ const filteredLocations = locations.filter(location =>
                                 />
                             </div>
                             <div className="mt-4">
-                                <label htmlFor="location" className="block mb-2 text-sm font-medium text-gray-900">Location</label>
+                                <label htmlFor="location" className="block mb-2 text-sm font-medium text-gray-900">Lokasi</label>
                                 <div className="relative">
                                     <button
                                         type="button"
                                         className="block w-full p-2 text-left text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 flex justify-between items-center"
                                         onClick={toggleLocationPopUp}
                                     >
-                                        <span>{location || "Select Location"}</span>
+                                        <span>{location || "Pilih Lokasi"}</span>
                                         <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                                         </svg>
@@ -152,7 +151,7 @@ const filteredLocations = locations.filter(location =>
                                         value={status}
                                         onChange={(e) => setStatus(e.target.value)}
                                     >
-                                        <option value="">All Statuses</option>
+                                        <option value="">Semua Status</option>
                                         <option value="Menemukan">Menemukan</option>
                                         <option value="Kehilangan">Kehilangan</option>
                                     </select>
@@ -161,14 +160,13 @@ const filteredLocations = locations.filter(location =>
                                     </svg>
                                 </div>
                             </div>
-                            
                             <div className="mt-6 flex justify-end">
                                 <button
                                     type="button"
                                     className="text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 mr-2"
                                     onClick={toggleFilter}
                                 >
-                                    Cancel
+                                    Batal
                                 </button>
                                 <button
                                     type="submit"
@@ -178,7 +176,7 @@ const filteredLocations = locations.filter(location =>
                                         handleSubmit(new Event('submit'));
                                     }}
                                 >
-                                    Apply
+                                    Terapkan
                                 </button>
                             </div>
                         </div>
@@ -188,13 +186,13 @@ const filteredLocations = locations.filter(location =>
 
             {isLocationPopUpOpen && (
                 <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
-                    <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+                    <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all max-w-md w-full mx-4 sm:max-w-lg">
                         <div className="bg-white p-6">
-                            <h3 className="text-lg leading-6 font-medium text-gray-900">Select Location</h3>
+                            <h3 className="text-lg leading-6 font-medium text-gray-900">Pilih Lokasi</h3>
                             <div className="mt-4">
                                 <input
                                     type="text"
-                                    placeholder="Search Location"
+                                    placeholder="Cari Lokasi"
                                     className="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                                     value={locationSearchTerm}
                                     onChange={handleLocationSearch}
@@ -229,6 +227,6 @@ const filteredLocations = locations.filter(location =>
                     </div>
                 </div>
             )}
-    </div>
-  );
+        </div>
+    );
 }

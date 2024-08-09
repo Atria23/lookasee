@@ -51,10 +51,7 @@ function App() {
           <Route path="/resetpassword" element={<ResetPassword/>} />
           <Route path="/resetpassword" element={<fetch/>} />
           <Route path="/userguide" element={<UserGuide/>} />
-          <Route path="/userguide" element={<UserGuide selectedGuide="chat" />} />
           <Route path="/aboutus" element={<AboutUs/>} />
-
-
         </Routes>
       </BrowserRouter>
     </AuthProvider>

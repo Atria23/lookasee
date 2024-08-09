@@ -222,54 +222,63 @@ const Nav = () => {
 
                     {/* Drawer */}
                     {drawerOpen && (
-                        <div ref={drawerRef} className="fixed top-0 left-0 w-64 h-full bg-gray-800 text-white transition-transform transform translate-x-0 z-40">
-                            <button onClick={handleDrawerToggle} className="absolute top-4 right-4 text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                            <div className="p-4">
-                                <h2 className="text-xl font-bold">Menu</h2>
-                                <ul className="mt-4">
-                                    <li>
-                                        <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/'>Beranda</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/profile'>Profil</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/search'>Pencarian</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/upload'>Unggah</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/riwayat'>Riwayat</NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/message'>Pesan</NavLink>
-                                    </li>
-                                    <li><button onClick={handleLogout} className="flex items-center py-12 px-4 text-gray-300 hover:text-white">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className="w-6 h-6 mr-2"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            stroke="currentColor"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1"
-                                            />
-                                        </svg>
-                                        Keluar
-                                    </button>
-                                    </li>
-                                </ul>
+                        <>
+                            {/* Overlay */}
+                            <div
+                                className="fixed inset-0 bg-black bg-opacity-60 z-30"
+                                onClick={handleDrawerToggle} // Menutup drawer ketika overlay diklik
+                            ></div>
+
+                            {/* Drawer */}
+                            <div ref={drawerRef} className="fixed top-0 left-0 w-64 h-full bg-gray-800 text-white transition-transform transform translate-x-0 z-40">
+                                <button onClick={handleDrawerToggle} className="absolute top-4 right-4 text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                <div className="p-4">
+                                    <h2 className="text-xl font-bold">Menu</h2>
+                                    <ul className="mt-4">
+                                        <li>
+                                            <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/'>Beranda</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/profile'>Profil</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/search'>Pencarian</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/upload'>Unggah</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/riwayat'>Riwayat</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink className={({ isActive }) => (isActive ? 'block py-2 px-4 bg-gray-700 rounded' : 'block py-2 px-4 hover:bg-gray-700 rounded')} to='/message'>Pesan</NavLink>
+                                        </li>
+                                        <li><button onClick={handleLogout} className="flex items-center py-12 px-4 text-gray-300 hover:text-white">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                className="w-6 h-6 mr-2"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth="2"
+                                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1"
+                                                />
+                                            </svg>
+                                            Keluar
+                                        </button>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+                        </>
                     )}
                 </div>
             </nav>

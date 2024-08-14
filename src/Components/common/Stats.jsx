@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../../client';
 
-export default function HomePage() {
+export default function Stats() {
   const [jumlahBarangHilang, setJumlahBarangHilang] = useState(0);
   const [jumlahBarangDitemukan, setJumlahBarangDitemukan] = useState(0);
   const [jumlahBarangDikembalikan, setJumlahBarangDikembalikan] = useState(0);

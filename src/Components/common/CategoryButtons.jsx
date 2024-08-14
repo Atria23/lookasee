@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Kategori() {
+export default function CategoryButtons() {
   const navigate = useNavigate();
 
   const handleCategoryClick = (category) => {

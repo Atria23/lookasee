@@ -257,6 +257,28 @@ const DetailBarang = () => {
 
       </div>
 
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
+            <h2 className="text-xl font-bold mb-4 text-center">Konfirmasi Barang</h2>
+            <p className="mb-4 text-center">Apakah anda yakin barang ini sudah kembali ke pemiliknya?</p>
+            <div className="mt-4 flex justify-center">
+              <button
+                onClick={closeModal}
+                className="bg-gray-500 text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2"
+              >
+                Batal
+              </button>
+              <button
+                onClick={confirmItemFound}
+                className="bg-blue-700 text-white font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Konfirmasi
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <style>{`
         /* Tailwind CSS kustom untuk menyembunyikan scrollbar */
 .scrollbar-hidden::-webkit-scrollbar {
